@@ -13,19 +13,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import ru.electronikas.ttest.Assets;
 import ru.electronikas.ttest.Textures;
+import ru.electronikas.ttest.logic.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-//import javax.swing.*;
-//import javax.swing.text.View;
-
-
 public class TestUI {
     public static final float SELECTED_FONT_SCALE = 1.3f;
 
-
-    Integer iQuestion = 1;
     Map<Integer, String> lineQuestion = new HashMap<Integer, String>();
 
     //    TextView tvOut;
@@ -37,7 +32,10 @@ public class TestUI {
     float h = 0;
     float w;
 
-    public TestUI(Stage stage) {
+    private Test testLogic;
+
+    public TestUI(Stage stage, Test testLogic) {
+        this.testLogic = testLogic;
         w = Gdx.graphics.getWidth();
         h = Gdx.graphics.getHeight();
         butW = w / 5;
@@ -359,49 +357,14 @@ exitButton1.setStyle(Button.ButtonStyle Check);
         TextButton nextButton = new TextButton(Assets.bdl().get("nextButton"), Textures.getUiSkin());
         nextButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
+                String question = null;
 
-                Map<Integer, String> listQuestion = new HashMap<Integer, String>();
-                listQuestion.put(1, "Часто ли Вы испытываете тягу к новым впечатлениям, к тому, чтобы отвлечься, испытывать сильные ощущения?");
-                listQuestion.put(2, "Часто ли Вы чувствуете, что нуждаетесь в друзьях, которые могут Вас понять, ободрить или посочувствовать?");
-                listQuestion.put(3, "Считаете ли Вы себя беззаботным человеком?");
-                listQuestion.put(4, "Очень ли трудно Вам отказываться от своих намерений?");
-                listQuestion.put(5, "Обдумываете ли Вы свои дела, не спеша, и предпочитаете ли подождать, прежде чем действовать?");
-                listQuestion.put(6, "Всегда ли сдерживаете Вы свои обещания, даже если это Вам невыгодно?");
-                listQuestion.put(7, "Часто ли у Вас бывают спады и подъемы настроения?");
-                listQuestion.put(8, "Быстро ли Вы обычно действуете и говорите, не тратите ли много времени на обдумывание?");
-                listQuestion.put(9, "Возникало ли у Вас когда-нибудь чувство, что Вы несчастны, хотя никакой серъезной причины для этого не было?");
-                listQuestion.put(10, "Верно ли, что \"на спор\" Вы способны решиться на все?");
-                listQuestion.put(11, "Смущаетесь ли Вы, когда хотите познакомиться с человеком противоположного пола, который Вам симпатичен?");
-                listQuestion.put(12, "Бывает ли когда-нибудь, что разозлившись, Вы выходите из себя?");
-                listQuestion.put(13, "Часто ли бывает, что Вы действуете необдуманно, под влиянием момента?");
-                listQuestion.put(14, "Часто ли Вас беспокоят мысли о том, что Вам не следовало чего-либо делать или говорить?");
-                listQuestion.put(15, "Предпочитаете ли Вы чтение книг встречам с людьми?");
-                listQuestion.put(16, "Верно ли, что Вас легко задеть?");
-                listQuestion.put(17, "Любите ли Вы часто бывать в компании?");
-                listQuestion.put(18, "Бывают ли у Вас иногда такие мысли, которыми Вам не хотелось бы делиться с другими людьми?");
-                listQuestion.put(19, "Верно ли, что иногда Вы настолько полны энергии, что все \"горит в руках\", а иногда чувствуете сильную вялость?");
-                listQuestion.put(20, "Стараетесь ли Вы ограничить круг своих знакомых небольшим числом самых близких друзей?");
-                listQuestion.put(21, "Много ли Вы мечтаете?");
-                listQuestion.put(22, "Когда на Вас кричат, отвечаете ли тем же?");
-                listQuestion.put(23, "Считаете ли Вы все свои привычки хорошими?");
-                listQuestion.put(24, "Часто ли у Вас появляется чувство, что Вы в чем-то виноваты?");
-                listQuestion.put(25, "Способны ли Вы иногда дать волю своим чувствам и беззаботно развлечься с веселой компанией?");
-                listQuestion.put(26, "Можно ли сказать, что нервы у Вас часто бывают натянуты до предела?");
-                listQuestion.put(27, "Считают ли Вас человеком живым и веселым?");
-                listQuestion.put(28, "После того, как дело сделано, часто ли Вы мысленно возвращаетесь к нему и думаете, что могли бы сделать лучше?");
-                listQuestion.put(29, "Чувствуете ли Вы себя неспокойно, находясь в большой компании?");
-                listQuestion.put(30, "Бывает ли, что Вы передаете слухи?");
-                listQuestion.put(31, "Бывает ли, что Вам не спится из-за того, что в голову лезут разные мысли?");
-                listQuestion.put(32, "Что Вы предпочитаете, если хотите узнать что-либо: найти в книге (+), или спросить у друзей?");
-                listQuestion.put(33, "Бывают ли у Вас сильные сердцебиения?");
-                listQuestion.put(34, "Нравится ли Вам работа, требующая сосредоточения?");
-                listQuestion.put(35, "Бывают ли у Вас приступы дрожи?");
-                listQuestion.put(36, "Всегда ли Вы говорите только правду?");
-                listQuestion.put(37, "Бывает ли Вам неприятно находиться в компании, где все подшучивают друг над другом?");
-
-
-                String question = listQuestion.get(iQuestion);
-
+                if(testLogic.goToNextQuestion()) {
+                  question = testLogic.getCurrentQuestionText();
+                } else {
+                    testDone();
+                    return;
+                }
 
 //leveMenu.getCell(info).r
 
@@ -426,22 +389,17 @@ exitButton1.setStyle(Button.ButtonStyle Check);
                 lvlTable.add(info).width(w); //leveMenu.add(info);
 
 
-                iQuestion += 1;
-
 //                levelsBlock();
 
-                System.out.print("nextButtonnn.= " + iQuestion);
+                System.out.print("nextButtonnn.= " + testLogic.getQuestionNumber());
             }
         });
         return nextButton;
     }
 
-
-    private Actor createTextField() {
-
-        return null;
+    private void testDone() {
+     //TODO
     }
-
 
     private Actor createHeaderLabel() {
         Label headLabel = new Label(Assets.bdl().get("header"), uiSkin);
