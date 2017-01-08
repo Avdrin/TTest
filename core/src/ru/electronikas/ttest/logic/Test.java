@@ -41,6 +41,7 @@ Boolean honestAnswers;
 
     private String testResult;
     private void calculateTestResult() {
+
        /*if((questionSource.getCurrentQuestionNumber() == 6 && testAnswersMap.get(6) == 1)
                || (questionSource.getCurrentQuestionNumber() == 24 && testAnswersMap.get(24) == 1)
                || (questionSource.getCurrentQuestionNumber() == 36 && testAnswersMap.get(36) == 1)
