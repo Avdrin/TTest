@@ -47,38 +47,14 @@ public class TestUI {
         leveMenu.setWidth(w);
         leveMenu.setHeight(h);
         leveMenu.defaults().width(w);
-//        leveMenu.defaults().width(w - 2*butW);
-//////////////////////        leveMenu.background("default-rect");
-
-
         leveMenu.row().height(h / 4);
         leveMenu.add(createHeaderLabel());
-
-
         leveMenu.row().height(h * (2f / 6 + 1f / 8)); //h / 8); //.width(w / 6);  //.height(h * (2f / 4 + 1f / 8));
         leveMenu.add(levelsBlock());
-
-//////////////////////      //  leveMenu.row().height(h * (2f / 4 + 1f / 8));
-
-
         leveMenu.row().height(h / 8).width(w / 4);
-//        leveMenu.add(openLevelButton());
-
         leveMenu.add(nextButton());
-
-//        leveMenu.row().height(h / 8).width(w / 9);
-
-//        leveMenu.row().height(h / 8).width(w / 2);
         leveMenu.row().height(h / 8).width(w / 4);
         leveMenu.add(exitButton());
-
-
-//leveMenu.add(openLevelButton());
-
-//        info = new Label( "Wm", uiSkin );
-//        leveMenu.add(info);
-
-
         leveMenu.setDebug(true);
         stage.addActor(leveMenu);
         Gdx.input.setInputProcessor(stage);  // Gdx.input.setInputProcessor(stage);
@@ -90,75 +66,11 @@ public class TestUI {
 
     private Actor levelsBlock() {
 
-//        System.out.print("i == " + iQuestion);
-
-//        iQuestion += 1;
-
         lvlTable = new Table();
         lvlTable.setSkin(Textures.getUiSkin());
         lvlTable.align(Align.center);
         lvlTable.defaults().width(20 * butW).height(h / 8);
-
-//        for(Level lvl : Level.values()) {
-//            if(lvl.equals(Level.demo)) continue;
-//            createRowByLevel(lvl, lvlTable);
-//        }
-
-//        TextField tct = new TextField("Часто ли вы испытываете тягу к новым впечатлениям, к тому, чтобы отвлечься, испытать сильные ощущения?",uiSkin);
-//        tct.appendText("Часто ли вы испытываете тягу к новым впечатлениям, к тому, чтобы отвлечься, испытать сильные ощущения?");
-//      tct.
-//        lvlTable.add(tct);
-
-//        info = new Label( "Часто ли вы испытываете тягу к новым впечатлениям, к тому, чтобы отвлечься, испытать сильные ощущения?", uiSkin );
-//        info.setWrap(true);
-////        info.setWidth(w); // or even as low as 10
-//        lvlTable.add(info).width(w); //leveMenu.add(info);
-//        lvlTable.add(info).width(w); //leveMenu.add(info);
-
-        /*TextButton textButton = new TextButton(Assets.bdl().get("exitButton"), Textures.getUiSkin());
         lvlTable.row().height(h / 8).width(w / 6);
-        lvlTable.add(textButton);
-*/
-
-/*        font = new BitmapFont();
-        skin = new Skin();
-
-        buttonAtlas = new TextureAtlas("buttonTest.pack");
-        skin.addRegions(buttonAtlas);
-        textButtonStyle = new TextButton.TextButtonStyle();
-        textButtonStyle.font = font;
-        textButtonStyle.up = skin.getDrawable("1BBlock");
-        textButtonStyle.down = skin.getDrawable("T1BBlock");
-        button = new TextButton("", textButtonStyle);
-        stage.addActor(button);
-        button.setPosition(20, 200);
-        button.getStyle().checked = button.getStyle().down;
-
-        button2Atlas = new TextureAtlas("Button2Test.pack");
-        skin.addRegions(button2Atlas);
-        textButtonStyle = new TextButton.TextButtonStyle();
-        textButtonStyle.font = font;
-        textButtonStyle.up = skin.getDrawable("2BBlock");
-        textButtonStyle.down = skin.getDrawable("T2BBlock");
-        button2 = new TextButton("", textButtonStyle);
-        stage.addActor(button2);
-        button2.setPosition(175, 200);
-        button2.getStyle().checked = button2.getStyle().down;
-
-        button3Atlas = new TextureAtlas("Button3Test.pack");
-        skin.addRegions(button3Atlas);
-        textButtonStyle = new TextButton.TextButtonStyle();
-        textButtonStyle.font = font;
-        textButtonStyle.up = skin.getDrawable("3BBlock");
-        textButtonStyle.down = skin.getDrawable("T3BBlock");
-        button3 = new TextButton("", textButtonStyle);
-        stage.addActor(button3);
-        button3.setPosition(330, 200);
-        button3.getStyle().checked = button3.getStyle().down;*/
-
-        lvlTable.row().height(h / 8).width(w / 6);
-//        TextButton exitButton1 = new TextButton(Assets.bdl().get("exitButton"), Textures.getUiSkin());
-
 
         TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
         buttonStyle.checked = uiSkin.newDrawable("white", Color.MAGENTA);//getDrawable("checked-button"); //""//new Drawable("wed",1234,3421,2342,50));
@@ -198,52 +110,7 @@ public class TestUI {
         buttons.add(exitButton24);
 
         lvlTable.add(exitButton23);
-
-//        lvlTable.row().height(h / 8).width(w / 6);
         lvlTable.add(exitButton24);
-  /*      exitButton1.TextButtonStyle("CheckBox");
-
-        RadioButton radioButton = new RadioButton("edc");
-//        radioButton.
-        lvlTable.add(radioButton);*/
-
-/*
-        CheckBox checkBox = new CheckBox(Assets.bdl().get("exitButton"), Textures.getUiSkin());
-        checkBox.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y){
-                System.out.print("8989.");
-            }
-        });
-
-        lvlTable.add(checkBox);
-//        lvlTable.row().height(h / 8).width(w / 3);
-//        lvlTable.add(checkBox);
-*/
-
-
-/*
-//        buttons.
-        Button.ButtonStyle buttonStyle = new Button.ButtonStyle(CheckBox);
-
-exitButton1.setStyle(Button.ButtonStyle Check);
-        lvlTable.add(exitButton1);
-*/
-//lvlTable.setC
-//lvlTable.add(buttons);
-//leveMenu.add(buttons);
-
-//        ButtonGroup buttonGroup = new ButtonGroup(new Button(), new Button(), new Button());
-//next set the max and min amount to be checked
-//        buttonGroup.setMaxCheckCount(1);
-//        buttonGroup.setMinCheckCount(0);
-//it may be useful to use this method:
-//        setUncheckLast(true); //If true, when the maximum number of buttons are checked and an additional button is checked, the last button to be checked is unchecked so that the maximum is not exceeded.
-//        lvlTable.add(buttonGroup);
-//
-//        leveMenu.add(buttonGroup);
-
-
-//        System.out.print("bnmm123.");
 
 
         ScrollPane scrollPane = new ScrollPane(lvlTable, Textures.getUiSkin());
@@ -306,52 +173,11 @@ exitButton1.setStyle(Button.ButtonStyle Check);
         TextButton exitButton = new TextButton(Assets.bdl().get("exitButton"), Textures.getUiSkin());
         exitButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-
-//          info = new Label( "45c", uiSkin );
-//leveMenu.add(info);
-
-
-                System.out.print("8989.");
                 Gdx.app.exit();
-//event.stop();
-//                event.cancel();
-//                //                TextView tvOut;
-//                Gdx.app.exit();
-////                dispose();
-//               Label lm = (Label) event.getListenerActor().getUserObject();
-//
-//               Label info = new Label( "Welcome to Android!", uiSkin );
-//leveMenu.add(lm);
-//
-//                lvlTable.add(openLevelButton());
-//
-
-//
-//
-//                Gdx.app.log("button", "clicked ");
             }
         });
         return exitButton;
     }
-
-//    private Actor buttonGroup(){
-//    ButtonGroup buttonGroup = new ButtonGroup();
-////        buttonGroup.add(selectButton());
-//        buttonGroup.setMaxCheckCount(1);
-//        buttonGroup.setMinCheckCount(1);
-//        buttonGroup.setUncheckLast(true);
-//
-//        buttonGroup.addListener(new ClickListener() {
-//            public void clicked(InputEvent event, float x, float y){
-//                info = new Label( "45c", uiSkin );
-//                leveMenu.add(info);
-//                System.out.print("ssdfsdfsdfsf.");
-//            }
-//        });
-//
-//        return buttonGroup;
-//}
-
 
     private Actor nextButton() {
         TextButton nextButton = new TextButton(Assets.bdl().get("nextButton"), Textures.getUiSkin());
@@ -366,31 +192,13 @@ exitButton1.setStyle(Button.ButtonStyle Check);
                     return;
                 }
 
-//leveMenu.getCell(info).r
-
-
                 Cell<Label> hb = lvlTable.getCell(info);
                 if (hb != null) {
-//                    hb.clearActor();
-//                    info.clear();//remove();
                     lvlTable.getCell(info).reset();
-//                    hb.clearActor();
-//                    info.invalidate();
                 }
-                ;
-
-//                lvlTable.getCell(info).reset();
-//                lvlTable.removeActor(info);
                 info = new Label(question, uiSkin);
-//                info.setText(question);
-
                 info.setWrap(true);
-
-                lvlTable.add(info).width(w); //leveMenu.add(info);
-
-
-//                levelsBlock();
-
+                lvlTable.add(info).width(w);
                 System.out.print("nextButtonnn.= " + testLogic.getQuestionNumber());
             }
         });
@@ -398,7 +206,7 @@ exitButton1.setStyle(Button.ButtonStyle Check);
     }
 
     private void testDone() {
-     //TODO
+        Gdx.app.exit();
     }
 
     private Actor createHeaderLabel() {

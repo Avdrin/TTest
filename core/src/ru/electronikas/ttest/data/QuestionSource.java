@@ -10,7 +10,7 @@ public class QuestionSource {
 
     Map<Integer, String> listQuestion = new HashMap<Integer, String>();
 
-    int currentQuestionNumber;
+    Integer currentQuestionNumber; //примитивные типы не могут быть ключами Map.
 
     public QuestionSource() {
         reset();
