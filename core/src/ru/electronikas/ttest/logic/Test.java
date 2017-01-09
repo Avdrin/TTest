@@ -18,6 +18,10 @@ public class Test {
     Integer introversionScala;
     Integer neuroticismScala;
 
+    String resultIntroversionScala;
+    String resultNeuroticismScala;
+
+
     //key - number of question
     //value - answer
     Map<Integer, Integer> testAnswersMap = new HashMap<Integer, Integer>();
@@ -85,31 +89,43 @@ public class Test {
                     testAnswersMap.get(50) + testAnswersMap.get(52) +
                     testAnswersMap.get(55) + testAnswersMap.get(57);
 
+
             if (introversionScala >= 19) {
-            };
+                resultIntroversionScala = "яркий экстраверт";
+            }
             if (introversionScala >= 15 && introversionScala < 19) {
-            };
+                resultIntroversionScala = "экстраверт";
+            }
             if (introversionScala > 12 && introversionScala < 15) {
-            };
+                resultIntroversionScala = "склонность к экстраверсии";
+            }
             if (introversionScala == 12) {
-            };
+                resultIntroversionScala = "пограничное состояние говорит об уравновешенности личностных качеств";
+            }
             if (introversionScala < 12) {
-            };
+                resultIntroversionScala = "склонность к интроверсии";
+            }
             if (introversionScala <= 9 && introversionScala > 5) {
-            };
+                resultIntroversionScala = "интроверт";
+            }
             if (introversionScala <= 5) {
-            };
+                resultIntroversionScala = "глубокий интроверт";
+            }
 
 
             if (neuroticismScala >= 19) {
-            };
+                resultNeuroticismScala = "очень высокий уровень нейротизма";
+            }
             if (neuroticismScala >= 13 && neuroticismScala < 19) {
-            };
+                resultNeuroticismScala = "высокий уровень нейротизма";
+            }
             if (neuroticismScala >= 9 && neuroticismScala < 13) {
-            };
+                resultNeuroticismScala = "среднее значение свидетельствует о наличии черт как одного типа темперамента так и другого в зависимости от того на какой границе находится \"координата\"";
+            }
             if (neuroticismScala < 9) {
-                //шкала неройтизма.
-            };
+                resultNeuroticismScala = "низкий уровень нейротизма";
+            }
+
 
 
         } else {
