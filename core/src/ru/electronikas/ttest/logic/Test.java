@@ -108,6 +108,7 @@ public class Test {
             if (neuroticismScala >= 9 && neuroticismScala < 13) {
             };
             if (neuroticismScala < 9) {
+                //шкала неройтизма.
             };
 
 
