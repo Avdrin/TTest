@@ -17,6 +17,7 @@ public class TestUI {
     public static final float SELECTED_FONT_SCALE = 1.3f;
 
     Label questionLabel;
+    Label resultLabel;
 
     Table leveMenu;
     Skin uiSkin;
@@ -90,6 +91,13 @@ public class TestUI {
         return lvlTable;
     }
 
+    private Actor createResultLabel() {
+        resultLabel = new Label(testLogic.getTestResult(), uiSkin);
+        resultLabel.setWrap(true);
+        resultLabel.setAlignment(Align.center);
+        return resultLabel;
+    }
+
     private Actor createQuestionLabel() {
         questionLabel = new Label(testLogic.getCurrentQuestionText(), uiSkin);
         questionLabel.setWrap(true);
@@ -128,13 +136,22 @@ public class TestUI {
             if(testLogic.goToNextQuestion()) {
                 question = testLogic.getCurrentQuestionText();
             } else {
-                testDone();
+                createResultLabel();
+//                resultTest();
+//                testDone();
                 return;
             }
 
             questionLabel.setText(question);
         }
     };
+
+    private void resultTest(){
+        Test test = new Test();
+        test.getTestResult();
+
+    }
+
 
     private void testDone() {
         Gdx.app.exit();
