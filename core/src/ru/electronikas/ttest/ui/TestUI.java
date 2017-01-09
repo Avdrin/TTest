@@ -1,8 +1,6 @@
 package ru.electronikas.ttest.ui;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -15,16 +13,10 @@ import ru.electronikas.ttest.Assets;
 import ru.electronikas.ttest.Textures;
 import ru.electronikas.ttest.logic.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class TestUI {
     public static final float SELECTED_FONT_SCALE = 1.3f;
 
-    Map<Integer, String> lineQuestion = new HashMap<Integer, String>();
-
-    //    TextView tvOut;
-    Label info;
+    Label questionLabel;
 
     Table leveMenu;
     Skin uiSkin;
@@ -41,132 +33,82 @@ public class TestUI {
         butW = w / 5;
         float butH = h; //w / 5;
         uiSkin = Textures.getUiSkin();
+
+        createButtonsGroup();
+
         leveMenu = new Table(uiSkin);
         leveMenu.align(Align.topLeft);
         leveMenu.setPosition(0, 0); //h);
         leveMenu.setWidth(w);
         leveMenu.setHeight(h);
         leveMenu.defaults().width(w);
-        leveMenu.row().height(h / 4);
+        leveMenu.row().height(h / 6);
         leveMenu.add(createHeaderLabel());
         leveMenu.row().height(h * (2f / 6 + 1f / 8)); //h / 8); //.width(w / 6);  //.height(h * (2f / 4 + 1f / 8));
-        leveMenu.add(levelsBlock());
+        leveMenu.add(questionBlock());
         leveMenu.row().height(h / 8).width(w / 4);
-        leveMenu.add(nextButton());
-        leveMenu.row().height(h / 8).width(w / 4);
-        leveMenu.add(exitButton());
+        leveMenu.add(exitButton()).pad(w/30);
         leveMenu.setDebug(true);
         stage.addActor(leveMenu);
         Gdx.input.setInputProcessor(stage);  // Gdx.input.setInputProcessor(stage);
 
     }
 
+    ButtonGroup<Button> buttonsGroup;
+    private void createButtonsGroup() {
+        buttonsGroup = new ButtonGroup<Button>();
+        buttonsGroup.setMaxCheckCount(1);
+        buttonsGroup.setMinCheckCount(0);
+        buttonsGroup.setUncheckLast(true);
+    }
+
 
     Table lvlTable;
 
-    private Actor levelsBlock() {
 
+    private Actor questionBlock() {
         lvlTable = new Table();
-        lvlTable.setSkin(Textures.getUiSkin());
+        lvlTable.setSkin(uiSkin);
         lvlTable.align(Align.center);
-        lvlTable.defaults().width(20 * butW).height(h / 8);
-        lvlTable.row().height(h / 8).width(w / 6);
+        lvlTable.defaults();
 
-        TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
-        buttonStyle.checked = uiSkin.newDrawable("white", Color.MAGENTA);//getDrawable("checked-button"); //""//new Drawable("wed",1234,3421,2342,50));
+        //Question row
+        lvlTable.row().width(w - w/10);
+        lvlTable.add(createQuestionLabel()).pad(w/30).colspan(2);
 
-        buttonStyle.font = new BitmapFont();
+        //Buttons Yes No row
+        lvlTable.row().height(h / 8);
+        lvlTable.add(createYesTestButton()).width(w/6).align(Align.right).pad(w/30);
+        lvlTable.add(createNoTestButton()).width(w/6).align(Align.left).pad(w/30);
 
-        buttonStyle.up = uiSkin.newDrawable("white", Color.LIGHT_GRAY); //skin.getDrawable("up-button");
-        buttonStyle.down = uiSkin.newDrawable("white", Color.DARK_GRAY); //skin.getDrawable("down-button");
-//        textButtonStyle.checked = skin.getDrawable("checked-button");
-        TextButton exitButton23 = new TextButton(Assets.bdl().get("exitButton"), Textures.getUiSkin());//"Button1", buttonStyle);
-        TextButton exitButton24 = new TextButton(Assets.bdl().get("exitButton"), Textures.getUiSkin());//"Button1", buttonStyle);
-        exitButton23.setStyle(buttonStyle);
-        exitButton23.setText("Yes");
+//        lvlTable.setDebug(true);
 
-        exitButton24.setStyle(buttonStyle);
-        exitButton24.setText("No");
-
-
-        exitButton23.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                System.out.print("exitButton1.");
-            }
-        });
-        exitButton24.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                System.out.print("exitButton2.");
-            }
-        });
-//        TextButton exitButton2 = new TextButton(Assets.bdl().get("exitButton"), Textures.getUiSkin());
-//        TextButton exitButton3 = new TextButton(Assets.bdl().get("exitButton"), Textures.getUiSkin());
-
-        ButtonGroup<Button> buttons = new ButtonGroup<Button>(); //exitButton1, exitButton2, exitButton3);
-        buttons.setMaxCheckCount(1);
-        buttons.setMinCheckCount(0);
-        buttons.setUncheckLast(true);
-        buttons.add(exitButton23);
-        buttons.add(exitButton24);
-
-        lvlTable.add(exitButton23);
-        lvlTable.add(exitButton24);
-
-
-        ScrollPane scrollPane = new ScrollPane(lvlTable, Textures.getUiSkin());
-        scrollPane.setWidth(butW);
-//        scrollPane.setHeight(h/2);
-        scrollPane.getStyle().background = null;
-        return scrollPane;
+//        ScrollPane scrollPane = new ScrollPane(lvlTable, Textures.getUiSkin());
+//        scrollPane.setWidth(butW);
+////        scrollPane.setHeight(h/2);
+//        scrollPane.getStyle().background = null;
+        return lvlTable;
     }
 
-/*
-    private void createRowByLevel(Level lvl, Table lvlTable) {
-        final Label nameLabel = new Label(lvl.name(), Textures.getUiSkin());
-        nameLabel.setAlignment(Align.center);
-        nameLabel.setUserObject(lvl);
-        nameLabel.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                Level lvl = (Level)event.getListenerActor().getUserObject();
-//                Assets.reloadModelByLevel(lvl);
-                if(lvl.ordinal() <= Level.getCurrentLevel().ordinal()) {
-                    currentLevel = lvl;
-                    setSelected(nameLabel);
-                }
-//                nameLabel.setColor(Color.GREEN);
-            }
-        });
-
-        if(lvl.ordinal() <= currentLevel.ordinal()) {
-            nameLabel.setColor(Color.WHITE);
-            if(lvl.ordinal() == currentLevel.ordinal()) {
-                nameLabel.setFontScale(SELECTED_FONT_SCALE);
-            }
-        } else {
-            nameLabel.setColor(Color.DARK_GRAY);
-        }
-
-        lvlTable.row();
-        lvlTable.add(nameLabel).width(butW*0.8f);
-
-    }
-*/
-
-    private void setSelected(Label nameLabel) {
-        for (Cell cell : lvlTable.getCells()) {
-            ((Label) cell.getActor()).setFontScale(1);
-        }
-        nameLabel.setFontScale(SELECTED_FONT_SCALE);
+    private Actor createQuestionLabel() {
+        questionLabel = new Label(testLogic.getCurrentQuestionText(), uiSkin);
+        questionLabel.setWrap(true);
+        questionLabel.setAlignment(Align.center);
+        return questionLabel;
     }
 
+    private TextButton createNoTestButton() {
+        TextButton noBut = new TextButton(Assets.bdl().get("no"),  uiSkin.get("testBut", TextButton.TextButtonStyle.class));//"Button1", buttonStyle);
+        buttonsGroup.add(noBut);
+        noBut.addListener(onQuestionClicked);
+        return noBut;
+    }
 
-    private Actor openLevelButton() {
-        TextButton openLevelBut = new TextButton(Assets.bdl().get("question1"), Textures.getUiSkin());
-        openLevelBut.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-            }
-        });
-        return openLevelBut;
+    private TextButton createYesTestButton() {
+        TextButton yesBut = new TextButton(Assets.bdl().get("yes"), uiSkin.get("testBut", TextButton.TextButtonStyle.class));//"Button1", buttonStyle);
+        buttonsGroup.add(yesBut);
+        yesBut.addListener(onQuestionClicked);
+        return yesBut;
     }
 
     private Actor exitButton() {
@@ -179,31 +121,20 @@ public class TestUI {
         return exitButton;
     }
 
-    private Actor nextButton() {
-        TextButton nextButton = new TextButton(Assets.bdl().get("nextButton"), Textures.getUiSkin());
-        nextButton.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                String question = null;
+    ClickListener onQuestionClicked = new ClickListener() {
+        public void clicked(InputEvent event, float x, float y) {
+            String question = null;
 
-                if(testLogic.goToNextQuestion()) {
-                  question = testLogic.getCurrentQuestionText();
-                } else {
-                    testDone();
-                    return;
-                }
-
-                Cell<Label> hb = lvlTable.getCell(info);
-                if (hb != null) {
-                    lvlTable.getCell(info).reset();
-                }
-                info = new Label(question, uiSkin);
-                info.setWrap(true);
-                lvlTable.add(info).width(w);
-                System.out.print("nextButtonnn.= " + testLogic.getQuestionNumber());
+            if(testLogic.goToNextQuestion()) {
+                question = testLogic.getCurrentQuestionText();
+            } else {
+                testDone();
+                return;
             }
-        });
-        return nextButton;
-    }
+
+            questionLabel.setText(question);
+        }
+    };
 
     private void testDone() {
         Gdx.app.exit();

@@ -91,6 +91,6 @@ public class QuestionSource {
     }
 
     public void reset() {
-        currentQuestionNumber = 0;
+        currentQuestionNumber = 1;
     }
 }

@@ -20,6 +20,7 @@ public class Test {
 
     String resultIntroversionScala;
     String resultNeuroticismScala;
+    private String totalResult; //TODO fill it
 
 
     //key - number of question
@@ -45,8 +46,6 @@ public class Test {
         }
         return true;
     }
-
-    private String testResult;
 
     private void calculateTestResult() {
 
@@ -140,7 +139,7 @@ public class Test {
     }
 
     public String getTestResult() {
-        return testResult;
+        return totalResult;
     }
 
     public String getCurrentQuestionText() {
