@@ -18,7 +18,8 @@ public class TestUI {
 
     Label questionLabel;
     Label resultLabel;
-
+    TextButton yesBut;
+    TextButton noBut;
     Table leveMenu;
     Skin uiSkin;
     float butW = 0;
@@ -26,6 +27,7 @@ public class TestUI {
     float w;
 
     private Test testLogic;
+
 
     public TestUI(Stage stage, Test testLogic) {
         this.testLogic = testLogic;
@@ -92,9 +94,17 @@ public class TestUI {
     }
 
     private Actor createResultLabel() {
+
         resultLabel = new Label(testLogic.getTestResult(), uiSkin);
         resultLabel.setWrap(true);
         resultLabel.setAlignment(Align.center);
+//        if (resultLabel == null){
+//            resultLabel = new Label("!!!", uiSkin);
+//        }
+        //Result row
+        lvlTable.row().width(w - w/10);
+        lvlTable.add(resultLabel).pad(w/30).colspan(2);//createResultLabel()).pad(w/30).colspan(2);
+
         return resultLabel;
     }
 
@@ -113,7 +123,7 @@ public class TestUI {
     }
 
     private TextButton createYesTestButton() {
-        TextButton yesBut = new TextButton(Assets.bdl().get("yes"), uiSkin.get("testBut", TextButton.TextButtonStyle.class));//"Button1", buttonStyle);
+        yesBut = new TextButton(Assets.bdl().get("yes"), uiSkin.get("testBut", TextButton.TextButtonStyle.class));//"Button1", buttonStyle);
         buttonsGroup.add(yesBut);
         yesBut.addListener(onQuestionClicked);
         return yesBut;
@@ -135,6 +145,20 @@ public class TestUI {
 
             if(testLogic.goToNextQuestion()) {
                 question = testLogic.getCurrentQuestionText();
+
+                if (buttonsGroup.getButtons().get(0).isChecked()){ //getChecked()
+                    testLogic.setTestAnswersMap(1);
+                    System.out.print("yesbuttonn");
+                }
+                if (buttonsGroup.getButtons().get(1).isChecked()){ // == noBut){ //.getChecked() == noBut){
+                    System.out.print("noButtonn");
+                    testLogic.setTestAnswersMap(0);
+                }
+
+//System.out.print("kk == " + buttonsGroup.getChecked());  //.getButton().getKeyCode());
+//                testLogic.setTestAnswersMap(1);
+
+
             } else {
                 createResultLabel();
 //                resultTest();

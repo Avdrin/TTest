@@ -10,7 +10,7 @@ public class QuestionSource {
 
     Map<Integer, String> listQuestion = new HashMap<Integer, String>();
 
-    Integer currentQuestionNumber; //примитивные типы не могут быть ключами Map.
+    Integer currentQuestionNumber = 0; //примитивные типы не могут быть ключами Map.
 
     public QuestionSource() {
         reset();
@@ -19,7 +19,7 @@ public class QuestionSource {
 
     private void fillQuestions() {
         listQuestion.put(1, "Часто ли Вы испытываете тягу к новым впечатлениям, к тому, чтобы отвлечься, испытывать сильные ощущения?");
-//        listQuestion.put(2, "Часто ли Вы чувствуете, что нуждаетесь в друзьях, которые могут Вас понять, ободрить или посочувствовать?");
+        listQuestion.put(2, "Часто ли Вы чувствуете, что нуждаетесь в друзьях, которые могут Вас понять, ободрить или посочувствовать?");
 //        listQuestion.put(3, "Считаете ли Вы себя беззаботным человеком?");
 //        listQuestion.put(4, "Очень ли трудно Вам отказываться от своих намерений?");
 //        listQuestion.put(5, "Обдумываете ли Вы свои дела, не спеша, и предпочитаете ли подождать, прежде чем действовать?");

@@ -18,8 +18,8 @@ public class Test {
     Integer introversionScala;
     Integer neuroticismScala;
 
-    String resultIntroversionScala;
-    String resultNeuroticismScala;
+    String resultIntroversionScala = "";
+    String resultNeuroticismScala = "";
     private String totalResult; //TODO fill it
 
 
@@ -42,20 +42,41 @@ public class Test {
 
         if (questionSource.getCurrentQuestion() == null) {
             //getTestResult();
-           // calculateTestResult();
+            // calculateTestResult();
             return false;
         }
         return true;
     }
 
+    public Map<Integer, Integer> setTestAnswersMap(Integer valueAnswers) {
+
+        testAnswersMap.put(getQuestionNumber() - 1, valueAnswers);
+
+        return testAnswersMap;
+    }
+
+
+    private Boolean testAnswersMapFull() {
+        if (testAnswersMap.size() == 0) {
+            return false;
+        }else {return true;}
+    }
+
     private Integer getLieScala() {
-        lieScala = testAnswersMap.get(6) + testAnswersMap.get(24) + testAnswersMap.get(36) +
-                testAnswersMap.get(12) + testAnswersMap.get(18) + testAnswersMap.get(30) +
-                testAnswersMap.get(42) + testAnswersMap.get(48) + testAnswersMap.get(54);
+        if (testAnswersMapFull()) {
+            lieScala = testAnswersMap.get(1);
+//            lieScala = testAnswersMap.get(6) + testAnswersMap.get(24) + testAnswersMap.get(36) +
+//                testAnswersMap.get(12) + testAnswersMap.get(18) + testAnswersMap.get(30) +
+//                testAnswersMap.get(42) + testAnswersMap.get(48) + testAnswersMap.get(54);
+        }else { lieScala = -1;}
         return lieScala;
     }
 
     private Boolean getHonestAnswers() {
+        if (getLieScala() == -1){
+            return false;
+        }
+
         if (getLieScala() > 5) {
             honestAnswers = false;
         } else {
@@ -67,21 +88,22 @@ public class Test {
 
     private Integer getIntroversionScala() {
         if (getHonestAnswers()) {
-            introversionScala = testAnswersMap.get(1) + testAnswersMap.get(3) +
-                    testAnswersMap.get(8) + testAnswersMap.get(10) +
-                    testAnswersMap.get(13) + testAnswersMap.get(17) +
-                    testAnswersMap.get(22) + testAnswersMap.get(25) +
-                    testAnswersMap.get(27) + testAnswersMap.get(39) +
-                    testAnswersMap.get(44) + testAnswersMap.get(46) +
-                    testAnswersMap.get(49) + testAnswersMap.get(53) +
-                    testAnswersMap.get(56) +
-                    testAnswersMap.get(5) + testAnswersMap.get(15) +
-                    testAnswersMap.get(20) + testAnswersMap.get(29) +
-                    testAnswersMap.get(32) + testAnswersMap.get(34) +
-                    testAnswersMap.get(37) + testAnswersMap.get(41) +
-                    testAnswersMap.get(51);
+            introversionScala = testAnswersMap.get(1);
+//            introversionScala = testAnswersMap.get(1) + testAnswersMap.get(3) +
+//                    testAnswersMap.get(8) + testAnswersMap.get(10) +
+//                    testAnswersMap.get(13) + testAnswersMap.get(17) +
+//                    testAnswersMap.get(22) + testAnswersMap.get(25) +
+//                    testAnswersMap.get(27) + testAnswersMap.get(39) +
+//                    testAnswersMap.get(44) + testAnswersMap.get(46) +
+//                    testAnswersMap.get(49) + testAnswersMap.get(53) +
+//                    testAnswersMap.get(56) +
+//                    testAnswersMap.get(5) + testAnswersMap.get(15) +
+//                    testAnswersMap.get(20) + testAnswersMap.get(29) +
+//                    testAnswersMap.get(32) + testAnswersMap.get(34) +
+//                    testAnswersMap.get(37) + testAnswersMap.get(41) +
+//                    testAnswersMap.get(51);
         } else {
-            introversionScala = null;
+            introversionScala = -1;
         }
 
         return introversionScala;
@@ -89,20 +111,21 @@ public class Test {
 
     private Integer getNeuroticismScala() {
         if (getHonestAnswers()) {
-            neuroticismScala = testAnswersMap.get(2) + testAnswersMap.get(4) +
-                    testAnswersMap.get(7) + testAnswersMap.get(9) +
-                    testAnswersMap.get(11) + testAnswersMap.get(14) +
-                    testAnswersMap.get(16) + testAnswersMap.get(19) +
-                    testAnswersMap.get(21) + testAnswersMap.get(23) +
-                    testAnswersMap.get(26) + testAnswersMap.get(28) +
-                    testAnswersMap.get(31) + testAnswersMap.get(33) +
-                    testAnswersMap.get(35) + testAnswersMap.get(38) +
-                    testAnswersMap.get(40) + testAnswersMap.get(43) +
-                    testAnswersMap.get(45) + testAnswersMap.get(47) +
-                    testAnswersMap.get(50) + testAnswersMap.get(52) +
-                    testAnswersMap.get(55) + testAnswersMap.get(57);
+            neuroticismScala = testAnswersMap.get(1);
+//            neuroticismScala = testAnswersMap.get(2) + testAnswersMap.get(4) +
+//                    testAnswersMap.get(7) + testAnswersMap.get(9) +
+//                    testAnswersMap.get(11) + testAnswersMap.get(14) +
+//                    testAnswersMap.get(16) + testAnswersMap.get(19) +
+//                    testAnswersMap.get(21) + testAnswersMap.get(23) +
+//                    testAnswersMap.get(26) + testAnswersMap.get(28) +
+//                    testAnswersMap.get(31) + testAnswersMap.get(33) +
+//                    testAnswersMap.get(35) + testAnswersMap.get(38) +
+//                    testAnswersMap.get(40) + testAnswersMap.get(43) +
+//                    testAnswersMap.get(45) + testAnswersMap.get(47) +
+//                    testAnswersMap.get(50) + testAnswersMap.get(52) +
+//                    testAnswersMap.get(55); // + testAnswersMap.get(57);
         } else {
-            neuroticismScala = null;
+            neuroticismScala = -1;
         }
 
         return neuroticismScala;
@@ -111,9 +134,10 @@ public class Test {
 
     private void calculateTestResult() {
 
-        lieScala = testAnswersMap.get(6) + testAnswersMap.get(24) + testAnswersMap.get(36) +
-                testAnswersMap.get(12) + testAnswersMap.get(18) + testAnswersMap.get(30) +
-                testAnswersMap.get(42) + testAnswersMap.get(48) + testAnswersMap.get(54);
+        lieScala = testAnswersMap.get(1);
+//        lieScala = testAnswersMap.get(6) + testAnswersMap.get(24) + testAnswersMap.get(36) +
+//                testAnswersMap.get(12) + testAnswersMap.get(18) + testAnswersMap.get(30) +
+//                testAnswersMap.get(42) + testAnswersMap.get(48) + testAnswersMap.get(54);
 
         if (lieScala > 5) {
             honestAnswers = false;
@@ -123,32 +147,33 @@ public class Test {
 
 
         if (honestAnswers) {
-            introversionScala = testAnswersMap.get(1) + testAnswersMap.get(3) +
-                    testAnswersMap.get(8) + testAnswersMap.get(10) +
-                    testAnswersMap.get(13) + testAnswersMap.get(17) +
-                    testAnswersMap.get(22) + testAnswersMap.get(25) +
-                    testAnswersMap.get(27) + testAnswersMap.get(39) +
-                    testAnswersMap.get(44) + testAnswersMap.get(46) +
-                    testAnswersMap.get(49) + testAnswersMap.get(53) +
-                    testAnswersMap.get(56) +
-                    testAnswersMap.get(5) + testAnswersMap.get(15) +
-                    testAnswersMap.get(20) + testAnswersMap.get(29) +
-                    testAnswersMap.get(32) + testAnswersMap.get(34) +
-                    testAnswersMap.get(37) + testAnswersMap.get(41) +
-                    testAnswersMap.get(51);
+            introversionScala = testAnswersMap.get(1);
+//            introversionScala = testAnswersMap.get(1) + testAnswersMap.get(3) +
+//                    testAnswersMap.get(8) + testAnswersMap.get(10) +
+//                    testAnswersMap.get(13) + testAnswersMap.get(17) +
+//                    testAnswersMap.get(22) + testAnswersMap.get(25) +
+//                    testAnswersMap.get(27) + testAnswersMap.get(39) +
+//                    testAnswersMap.get(44) + testAnswersMap.get(46) +
+//                    testAnswersMap.get(49) + testAnswersMap.get(53) +
+//                    testAnswersMap.get(56) +
+//                    testAnswersMap.get(5) + testAnswersMap.get(15) +
+//                    testAnswersMap.get(20) + testAnswersMap.get(29) +
+//                    testAnswersMap.get(32) + testAnswersMap.get(34) +
+//                    testAnswersMap.get(37) + testAnswersMap.get(41) +
+//                    testAnswersMap.get(51);
 
-            neuroticismScala = testAnswersMap.get(2) + testAnswersMap.get(4) +
-                    testAnswersMap.get(7) + testAnswersMap.get(9) +
-                    testAnswersMap.get(11) + testAnswersMap.get(14) +
-                    testAnswersMap.get(16) + testAnswersMap.get(19) +
-                    testAnswersMap.get(21) + testAnswersMap.get(23) +
-                    testAnswersMap.get(26) + testAnswersMap.get(28) +
-                    testAnswersMap.get(31) + testAnswersMap.get(33) +
-                    testAnswersMap.get(35) + testAnswersMap.get(38) +
-                    testAnswersMap.get(40) + testAnswersMap.get(43) +
-                    testAnswersMap.get(45) + testAnswersMap.get(47) +
-                    testAnswersMap.get(50) + testAnswersMap.get(52) +
-                    testAnswersMap.get(55) + testAnswersMap.get(57);
+            neuroticismScala = testAnswersMap.get(1); //testAnswersMap.get(2) + testAnswersMap.get(4) +
+//                    testAnswersMap.get(7) + testAnswersMap.get(9) +
+//                    testAnswersMap.get(11) + testAnswersMap.get(14) +
+//                    testAnswersMap.get(16) + testAnswersMap.get(19) +
+//                    testAnswersMap.get(21) + testAnswersMap.get(23) +
+//                    testAnswersMap.get(26) + testAnswersMap.get(28) +
+//                    testAnswersMap.get(31) + testAnswersMap.get(33) +
+//                    testAnswersMap.get(35) + testAnswersMap.get(38) +
+//                    testAnswersMap.get(40) + testAnswersMap.get(43) +
+//                    testAnswersMap.get(45) + testAnswersMap.get(47) +
+//                    testAnswersMap.get(50) + testAnswersMap.get(52) +
+//                    testAnswersMap.get(55);// + testAnswersMap.get(57);
 
 
             if (introversionScala >= 19) {
@@ -163,7 +188,7 @@ public class Test {
             if (introversionScala == 12) {
                 resultIntroversionScala = "пограничное состояние говорит об уравновешенности личностных качеств";
             }
-            if (introversionScala < 12) {
+            if (introversionScala < 12 && introversionScala > 9) {
                 resultIntroversionScala = "склонность к интроверсии";
             }
             if (introversionScala <= 9 && introversionScala > 5) {
@@ -212,7 +237,7 @@ public class Test {
         if (getIntroversionScala() == 12) {
             resultIntroversionScala = "пограничное состояние говорит об уравновешенности личностных качеств";
         }
-        if (getIntroversionScala() < 12) {
+        if (getIntroversionScala() < 12 && getIntroversionScala() > 9) {
             resultIntroversionScala = "склонность к интроверсии";
         }
         if (getIntroversionScala() <= 9 && getIntroversionScala() > 5) {
@@ -242,7 +267,7 @@ public class Test {
 
     public String getTestResult() {
 
- //       getResultIntroversionScala();
+        //       getResultIntroversionScala();
         // getResultNeuroticismScala();
         totalResult = getResultIntroversionScala() + ", " + getResultNeuroticismScala();
         return totalResult;
