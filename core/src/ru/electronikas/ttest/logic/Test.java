@@ -64,10 +64,11 @@ public class Test {
 
     private Integer getLieScala() {
         if (testAnswersMapFull()) {
-            lieScala = testAnswersMap.get(1);
-//            lieScala = testAnswersMap.get(6) + testAnswersMap.get(24) + testAnswersMap.get(36) +
-//                testAnswersMap.get(12) + testAnswersMap.get(18) + testAnswersMap.get(30) +
-//                testAnswersMap.get(42) + testAnswersMap.get(48) + testAnswersMap.get(54);
+//            lieScala = testAnswersMap.get(6);
+            lieScala = 0;
+            lieScala = testAnswersMap.get(6) + testAnswersMap.get(24) + testAnswersMap.get(36) +
+                testAnswersMap.get(12) + testAnswersMap.get(18) + testAnswersMap.get(30) +
+                testAnswersMap.get(42) + testAnswersMap.get(48) + testAnswersMap.get(54);
         }else { lieScala = -1;}
         return lieScala;
     }
@@ -88,20 +89,20 @@ public class Test {
 
     private Integer getIntroversionScala() {
         if (getHonestAnswers()) {
-            introversionScala = testAnswersMap.get(1);
-//            introversionScala = testAnswersMap.get(1) + testAnswersMap.get(3) +
-//                    testAnswersMap.get(8) + testAnswersMap.get(10) +
-//                    testAnswersMap.get(13) + testAnswersMap.get(17) +
-//                    testAnswersMap.get(22) + testAnswersMap.get(25) +
-//                    testAnswersMap.get(27) + testAnswersMap.get(39) +
-//                    testAnswersMap.get(44) + testAnswersMap.get(46) +
-//                    testAnswersMap.get(49) + testAnswersMap.get(53) +
-//                    testAnswersMap.get(56) +
-//                    testAnswersMap.get(5) + testAnswersMap.get(15) +
-//                    testAnswersMap.get(20) + testAnswersMap.get(29) +
-//                    testAnswersMap.get(32) + testAnswersMap.get(34) +
-//                    testAnswersMap.get(37) + testAnswersMap.get(41) +
-//                    testAnswersMap.get(51);
+//            introversionScala = testAnswersMap.get(1);
+            introversionScala = testAnswersMap.get(1) + testAnswersMap.get(3) +
+                    testAnswersMap.get(8) + testAnswersMap.get(10) +
+                    testAnswersMap.get(13) + testAnswersMap.get(17) +
+                    testAnswersMap.get(22) + testAnswersMap.get(25) +
+                    testAnswersMap.get(27) + testAnswersMap.get(39) +
+                    testAnswersMap.get(44) + testAnswersMap.get(46) +
+                    testAnswersMap.get(49) + testAnswersMap.get(53) +
+                    testAnswersMap.get(56) +
+                    testAnswersMap.get(5) + testAnswersMap.get(15) +
+                    testAnswersMap.get(20) + testAnswersMap.get(29) +
+                    testAnswersMap.get(32) + testAnswersMap.get(34) +
+                    testAnswersMap.get(37) + testAnswersMap.get(41) +
+                    testAnswersMap.get(51);
         } else {
             introversionScala = -1;
         }
@@ -111,19 +112,19 @@ public class Test {
 
     private Integer getNeuroticismScala() {
         if (getHonestAnswers()) {
-            neuroticismScala = testAnswersMap.get(1);
-//            neuroticismScala = testAnswersMap.get(2) + testAnswersMap.get(4) +
-//                    testAnswersMap.get(7) + testAnswersMap.get(9) +
-//                    testAnswersMap.get(11) + testAnswersMap.get(14) +
-//                    testAnswersMap.get(16) + testAnswersMap.get(19) +
-//                    testAnswersMap.get(21) + testAnswersMap.get(23) +
-//                    testAnswersMap.get(26) + testAnswersMap.get(28) +
-//                    testAnswersMap.get(31) + testAnswersMap.get(33) +
-//                    testAnswersMap.get(35) + testAnswersMap.get(38) +
-//                    testAnswersMap.get(40) + testAnswersMap.get(43) +
-//                    testAnswersMap.get(45) + testAnswersMap.get(47) +
-//                    testAnswersMap.get(50) + testAnswersMap.get(52) +
-//                    testAnswersMap.get(55); // + testAnswersMap.get(57);
+//            neuroticismScala = testAnswersMap.get(1);
+            neuroticismScala = testAnswersMap.get(2) + testAnswersMap.get(4) +
+                    testAnswersMap.get(7) + testAnswersMap.get(9) +
+                    testAnswersMap.get(11) + testAnswersMap.get(14) +
+                    testAnswersMap.get(16) + testAnswersMap.get(19) +
+                    testAnswersMap.get(21) + testAnswersMap.get(23) +
+                    testAnswersMap.get(26) + testAnswersMap.get(28) +
+                    testAnswersMap.get(31) + testAnswersMap.get(33) +
+                    testAnswersMap.get(35) + testAnswersMap.get(38) +
+                    testAnswersMap.get(40) + testAnswersMap.get(43) +
+                    testAnswersMap.get(45) + testAnswersMap.get(47) +
+                    testAnswersMap.get(50) + testAnswersMap.get(52) +
+                    testAnswersMap.get(55) + testAnswersMap.get(57);
         } else {
             neuroticismScala = -1;
         }
@@ -132,99 +133,17 @@ public class Test {
     }
 
 
-    private void calculateTestResult() {
-
-        lieScala = testAnswersMap.get(1);
-//        lieScala = testAnswersMap.get(6) + testAnswersMap.get(24) + testAnswersMap.get(36) +
-//                testAnswersMap.get(12) + testAnswersMap.get(18) + testAnswersMap.get(30) +
-//                testAnswersMap.get(42) + testAnswersMap.get(48) + testAnswersMap.get(54);
-
-        if (lieScala > 5) {
-            honestAnswers = false;
-        } else {
-            honestAnswers = true;
-        }
-
-
-        if (honestAnswers) {
-            introversionScala = testAnswersMap.get(1);
-//            introversionScala = testAnswersMap.get(1) + testAnswersMap.get(3) +
-//                    testAnswersMap.get(8) + testAnswersMap.get(10) +
-//                    testAnswersMap.get(13) + testAnswersMap.get(17) +
-//                    testAnswersMap.get(22) + testAnswersMap.get(25) +
-//                    testAnswersMap.get(27) + testAnswersMap.get(39) +
-//                    testAnswersMap.get(44) + testAnswersMap.get(46) +
-//                    testAnswersMap.get(49) + testAnswersMap.get(53) +
-//                    testAnswersMap.get(56) +
-//                    testAnswersMap.get(5) + testAnswersMap.get(15) +
-//                    testAnswersMap.get(20) + testAnswersMap.get(29) +
-//                    testAnswersMap.get(32) + testAnswersMap.get(34) +
-//                    testAnswersMap.get(37) + testAnswersMap.get(41) +
-//                    testAnswersMap.get(51);
-
-            neuroticismScala = testAnswersMap.get(1); //testAnswersMap.get(2) + testAnswersMap.get(4) +
-//                    testAnswersMap.get(7) + testAnswersMap.get(9) +
-//                    testAnswersMap.get(11) + testAnswersMap.get(14) +
-//                    testAnswersMap.get(16) + testAnswersMap.get(19) +
-//                    testAnswersMap.get(21) + testAnswersMap.get(23) +
-//                    testAnswersMap.get(26) + testAnswersMap.get(28) +
-//                    testAnswersMap.get(31) + testAnswersMap.get(33) +
-//                    testAnswersMap.get(35) + testAnswersMap.get(38) +
-//                    testAnswersMap.get(40) + testAnswersMap.get(43) +
-//                    testAnswersMap.get(45) + testAnswersMap.get(47) +
-//                    testAnswersMap.get(50) + testAnswersMap.get(52) +
-//                    testAnswersMap.get(55);// + testAnswersMap.get(57);
-
-
-            if (introversionScala >= 19) {
-                resultIntroversionScala = "яркий экстраверт";
-            }
-            if (introversionScala >= 15 && introversionScala < 19) {
-                resultIntroversionScala = "экстраверт";
-            }
-            if (introversionScala > 12 && introversionScala < 15) {
-                resultIntroversionScala = "склонность к экстраверсии";
-            }
-            if (introversionScala == 12) {
-                resultIntroversionScala = "пограничное состояние говорит об уравновешенности личностных качеств";
-            }
-            if (introversionScala < 12 && introversionScala > 9) {
-                resultIntroversionScala = "склонность к интроверсии";
-            }
-            if (introversionScala <= 9 && introversionScala > 5) {
-                resultIntroversionScala = "интроверт";
-            }
-            if (introversionScala <= 5) {
-                resultIntroversionScala = "глубокий интроверт";
-            }
-
-
-            if (neuroticismScala >= 19) {
-                resultNeuroticismScala = "очень высокий уровень нейротизма";
-            }
-            if (neuroticismScala >= 13 && neuroticismScala < 19) {
-                resultNeuroticismScala = "высокий уровень нейротизма";
-            }
-            if (neuroticismScala >= 9 && neuroticismScala < 13) {
-                resultNeuroticismScala = "среднее значение свидетельствует о наличии черт как одного типа темперамента так и другого в зависимости от того на какой границе находится \"координата\"";
-            }
-            if (neuroticismScala < 9) {
-                resultNeuroticismScala = "низкий уровень нейротизма";
-            }
-
-
-        } else {
-            //return
-            // "неискренность в ответах, свидетельствующая также о некоторой демонстративности поведения и ориентированности испытуемого на социальное одобрение"
-            // "Вам следует пройти другой тест, т.к. Вы стремитесь давать только "хорошие" ответы, а значит не можете быть оценены этим тестом."
-            // и здесь же добавить кнопку на другой тест.
-        }
-
-
-        //use testAnswersMap to write testResult
-    }
+//    private void calculateTestResult() {
+//            //return
+//            // "неискренность в ответах, свидетельствующая также о некоторой демонстративности поведения и ориентированности испытуемого на социальное одобрение"
+//            // "Вам следует пройти другой тест, т.к. Вы стремитесь давать только "хорошие" ответы, а значит не можете быть оценены этим тестом."
+//            // и здесь же добавить кнопку на другой тест.
+//        }
+//        //use testAnswersMap to write testResult
+//    }
 
     private String getResultIntroversionScala() {
+        if (getHonestAnswers()){
         if (getIntroversionScala() >= 19) {
             resultIntroversionScala = "яркий экстраверт";
         }
@@ -245,11 +164,16 @@ public class Test {
         }
         if (getIntroversionScala() <= 5) {
             resultIntroversionScala = "глубокий интроверт";
+        }}else {
+            resultIntroversionScala = "неискренность в ответах, свидетельствующая также о некоторой демонстративности поведения и ориентированности испытуемого на социальное одобрение. " +
+                    "Вам следует пройти другой тест, т.к. Вы стремитесь давать только \"хорошие\" ответы, а значит не можете быть оценены этим тестом. ";
+
         }
         return resultIntroversionScala;
     }
 
     private String getResultNeuroticismScala() {
+        if (getHonestAnswers()){
         if (getNeuroticismScala() >= 19) {
             resultNeuroticismScala = "очень высокий уровень нейротизма";
         }
@@ -261,14 +185,14 @@ public class Test {
         }
         if (getNeuroticismScala() < 9) {
             resultNeuroticismScala = "низкий уровень нейротизма";
+        }}else {
+            resultNeuroticismScala = "";
         }
         return resultNeuroticismScala;
     }
 
     public String getTestResult() {
 
-        //       getResultIntroversionScala();
-        // getResultNeuroticismScala();
         totalResult = getResultIntroversionScala() + ", " + getResultNeuroticismScala();
         return totalResult;
     }

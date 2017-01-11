@@ -116,7 +116,7 @@ public class TestUI {
     }
 
     private TextButton createNoTestButton() {
-        TextButton noBut = new TextButton(Assets.bdl().get("no"),  uiSkin.get("testBut", TextButton.TextButtonStyle.class));//"Button1", buttonStyle);
+        noBut = new TextButton(Assets.bdl().get("no"),  uiSkin.get("testBut", TextButton.TextButtonStyle.class));//"Button1", buttonStyle);
         buttonsGroup.add(noBut);
         noBut.addListener(onQuestionClicked);
         return noBut;
@@ -167,7 +167,15 @@ public class TestUI {
             }
 
             questionLabel.setText(question);
+
+            yesBut.setChecked(false);
+            noBut.setChecked(false);
+//            event.reset();
+//            noBut.reset();
         }
+
+
+
     };
 
     private void resultTest(){
