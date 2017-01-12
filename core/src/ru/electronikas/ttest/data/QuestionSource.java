@@ -11,6 +11,7 @@ public class QuestionSource {
     Map<Integer, String> listQuestion = new HashMap<Integer, String>();
 
     Integer currentQuestionNumber = 0; //примитивные типы не могут быть ключами Map.
+//    Integer lastQuestionNumber = 57;
 
     public QuestionSource() {
         reset();
@@ -75,8 +76,8 @@ public class QuestionSource {
         listQuestion.put(55, "55. Беспокоитесь ли Вы о своем здоровье?");
         listQuestion.put(56, "56. Любите ли Вы подшутить над другими?");
         listQuestion.put(57, "57. Страдаете ли Вы бессонницей?");
-        listQuestion.put(58, "58. Страдаете ли Вы бессонницей?");//TODO fix it - это ЛИШНИЙ ВОПРОС. ДОБАВЛЕН, ЧТОБЫ НЕ ПАДАЛО.
-
+//        listQuestion.put(58, "58. Страдаете ли Вы бессонницей?");//TODO fix it - это ЛИШНИЙ ВОПРОС. ДОБАВЛЕН, ЧТОБЫ НЕ ПАДАЛО.
+//
     }
 
     public void goToNextQuestion() {

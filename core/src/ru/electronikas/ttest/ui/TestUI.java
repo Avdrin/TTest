@@ -15,6 +15,9 @@ import ru.electronikas.ttest.logic.Test;
 
 public class TestUI {
     public static final float SELECTED_FONT_SCALE = 1.3f;
+    private final Integer RESP_ONE = 1;
+    private final Integer RESP_ZERO = 0;
+
 
     Label questionLabel;
     Label resultLabel;
@@ -142,17 +145,58 @@ public class TestUI {
     ClickListener onQuestionClicked = new ClickListener() {
         public void clicked(InputEvent event, float x, float y) {
             String question = null;
+Integer currNumberQuestt = testLogic.getQuestionNumber();
 
-            if(testLogic.goToNextQuestion()) {
+            if(testLogic.goToNextQuestion()) { //testLogic.getQuestionNumber() <= 57){  //(testLogic.goToNextQuestion()) {
                 question = testLogic.getCurrentQuestionText();
 
                 if (buttonsGroup.getButtons().get(0).isChecked()){ //getChecked()
-                    testLogic.setTestAnswersMap(1);
+                    if ((currNumberQuestt) == 12 ||
+                            (currNumberQuestt) == 18 ||
+                            (currNumberQuestt) == 30 ||
+                            (currNumberQuestt) == 42 ||
+                            (currNumberQuestt) == 48 ||
+                            (currNumberQuestt) == 54 ||
+                            (currNumberQuestt) == 5 ||
+                            (currNumberQuestt) == 15 ||
+                            (currNumberQuestt) == 20 ||
+                            (currNumberQuestt) == 29 ||
+                            (currNumberQuestt) == 32 ||
+                            (currNumberQuestt) == 34 ||
+                            (currNumberQuestt) == 37 ||
+                            (currNumberQuestt) == 41 ||
+                            (currNumberQuestt) == 51
+                            ){
+                        testLogic.setTestAnswersMap(RESP_ZERO);
+
+                    }else {
+                    testLogic.setTestAnswersMap(RESP_ONE);
+                    }
                     System.out.print("yesbuttonn");
                 }
                 if (buttonsGroup.getButtons().get(1).isChecked()){ // == noBut){ //.getChecked() == noBut){
+                    if ((currNumberQuestt) == 12 ||
+                            (currNumberQuestt) == 18 ||
+                            (currNumberQuestt) == 30 ||
+                            (currNumberQuestt) == 42 ||
+                            (currNumberQuestt) == 48 ||
+                            (currNumberQuestt) == 54 ||
+                            (currNumberQuestt) == 5 ||
+                            (currNumberQuestt) == 15 ||
+                            (currNumberQuestt) == 20 ||
+                            (currNumberQuestt) == 29 ||
+                            (currNumberQuestt) == 32 ||
+                            (currNumberQuestt) == 34 ||
+                            (currNumberQuestt) == 37 ||
+                            (currNumberQuestt) == 41 ||
+                            (currNumberQuestt) == 51
+                            ) {
+                        testLogic.setTestAnswersMap(RESP_ONE);
+                    }else {
+                        testLogic.setTestAnswersMap(RESP_ZERO);
+                    }
                     System.out.print("noButtonn");
-                    testLogic.setTestAnswersMap(0);
+//                    testLogic.setTestAnswersMap(respONE); //0);
                 }
 
 //System.out.print("kk == " + buttonsGroup.getChecked());  //.getButton().getKeyCode());
@@ -160,6 +204,16 @@ public class TestUI {
 
 
             } else {
+                question = testLogic.getCurrentQuestionText();
+
+                if (buttonsGroup.getButtons().get(0).isChecked()){ //getChecked()
+                    testLogic.setTestAnswersMap(RESP_ONE);
+                    System.out.print("yesbuttonn");
+                }
+                if (buttonsGroup.getButtons().get(1).isChecked()){ // == noBut){ //.getChecked() == noBut){
+                    testLogic.setTestAnswersMap(RESP_ZERO);
+                }
+
                 createResultLabel();
 //                resultTest();
 //                testDone();

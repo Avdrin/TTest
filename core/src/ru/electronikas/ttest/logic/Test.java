@@ -5,12 +5,6 @@ import ru.electronikas.ttest.data.QuestionSource;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by nikas on 1/8/17.
- * <p>
- * <p>
- * Logic of test
- */
 public class Test {
     QuestionSource questionSource;
     Integer lieScala;
@@ -193,7 +187,15 @@ public class Test {
 
     public String getTestResult() {
 
-        totalResult = getResultIntroversionScala() + ", " + getResultNeuroticismScala();
+//        for (Map.Entry<Integer, Integer> entry : testAnswersMap.entrySet()) {
+
+//            totalResult = "sd " + entry + "fv";
+//for(int i=0;i<=57;i++){
+//    totalResult = "sd " + testAnswersMap.get(i) + "fv";
+//        }
+
+
+        totalResult = getLieScala() + ", " + getResultIntroversionScala() + ", " + getResultNeuroticismScala();
         return totalResult;
     }
 
