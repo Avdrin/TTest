@@ -6,19 +6,48 @@ com.badlogic.gdx.graphics.Color: {
 	red: { a: 1, b: 0, g: 0, r: 1 },
 	black: { a: 1, b: 0, g: 0, r: 0 },
     aaa: {a: 0.3, b: 1, g: 1, r: 1 },
-	magenta: {a: 1, b:0.5, g: 0.5, r: 1 }
+	magenta: {a: 1, b:0.5, g: 0.5, r: 1 },
+	yellow: {a: 1, b:0, g:0.5, r: 0.5},
+	blue: {a: 1, b: 1, g: 0, r: 0}
 },
 com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable: {
 	dialogDim: { name: white, color: { r: 0, g: 0, b: 0, a: 0.45 } }
+//	button-setup-up: { name: button-setup, color: { r: 0, g: 0, b: 0, a: 0.45 } }
 },
+
+//	com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable: {
+//	button-setup-up: { name: button-setup, color: cyan },
+//	button-setup-over: { name: button-setup, color: brightCyan },
+//},
+
+
 com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {
 	default: { down: default-round-down, up: default-round },
+//	testBut: {down: button-blue-down, up: button-blue },
 	toggle: { down: default-round-down, checked: default-round-down, up: default-round }
 },
-com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
+
+
+
+/*
+	com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable: {
+	button-setup-up: { name: button-setup, color: cyan },
+	button-setup-over: { name: button-setup, color: brightCyan },
+},
+	com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
+	default: {
+		up: button-setup-up, over: button-setup-over,
+		font: default-shadow, fontColor: white, pressedOffsetY: -1
+	},
+},*/
+
+
+	com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
 	default: { down: default-round-down, up: default-round, font: default-font, fontColor: white },
-	toggle: { down: default-round-down, up: default-round, checked: default-round-down, font: default-font, fontColor: white, downFontColor: red }
-	testBut: { down: default-round-down, up: default-round, checked: default-round, font: default-font, fontColor: white, downFontColor: red }
+	toggle: { down: default-round-down, up: default-round, checked: default-round-down, font: default-font, fontColor: white, downFontColor: yellow }
+	testBut: { down: default-round-down, up: default-round, checked: default-round, font: default-font, fontColor: white, downFontColor: green }
+//	repeatButton: { down: default-round-down, up: default-round, checked: default-round, font: default-font, fontColor: white, downFontColor: green }
+//	exitButton: { down: default-round-down, up: default-round, checked: default-round, font: default-font, fontColor: white, downFontColor: green }
 //testBut: { down: default-round-down, up: default-round, checked: default-round-down, font: default-font, fontColor: white, downFontColor: red }
 },
 com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle: {
