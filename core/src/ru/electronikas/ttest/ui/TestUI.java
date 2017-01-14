@@ -30,7 +30,8 @@ public class TestUI {
     float w;
 
     private Test testLogic;
-
+    Integer currNumberQuestt;
+    String question;
 
     public TestUI(Stage stage, Test testLogic) {
         this.testLogic = testLogic;
@@ -139,12 +140,13 @@ public class TestUI {
     private Actor repeatButton() {
         TextButton repeatButton = new TextButton(Assets.bdl().get("repeatButton"), Textures.getUiSkin());
         repeatButton.setColor(0f,1f,0f,1f);
-        repeatButton.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                Test test = new Test();
-                test.start();
-            }
-        }
+        repeatButton.addListener(onRepeatClicked
+//                new ClickListener() {
+//            public void clicked(InputEvent event, float x, float y) {
+//                Test test = new Test();
+//                test.start();
+//            }
+//        }
         );
         return repeatButton;
     }
@@ -160,15 +162,53 @@ public class TestUI {
         return exitButton;
     }
 
+
+
+    ClickListener onRepeatClicked = new ClickListener() {
+        public void clicked(InputEvent event, float x, float y) {
+//            String question = null;
+//            Integer currNumberQuestt = testLogic.getQuestionNumber();
+//Test
+        testLogic = new Test();
+            testLogic.start();
+//test.start();
+
+            question = null;
+            currNumberQuestt = testLogic.getQuestionNumber();
+
+
+            question = testLogic.getCurrentQuestionText();
+            questionLabel.setText(question);
+
+
+//            yesBut.reset();
+//            noBut
+
+
+
+
+
+            yesBut.setChecked(false);
+            noBut.setChecked(false);
+
+
+
+        }
+    };
+
+
+
+
     ClickListener onQuestionClicked = new ClickListener() {
         public void clicked(InputEvent event, float x, float y) {
-            String question = null;
-Integer currNumberQuestt = testLogic.getQuestionNumber();
+            question = null;
+currNumberQuestt = testLogic.getQuestionNumber();
+
 
             if(testLogic.goToNextQuestion()) { //testLogic.getQuestionNumber() <= 57){  //(testLogic.goToNextQuestion()) {
-                question = testLogic.getCurrentQuestionText();
+//                question = testLogic.getCurrentQuestionText();
 
-                if (buttonsGroup.getButtons().get(0).isChecked()){ //getChecked()
+                if (buttonsGroup.getButtons().get(0).isChecked()){
                     if ((currNumberQuestt) == 12 ||
                             (currNumberQuestt) == 18 ||
                             (currNumberQuestt) == 30 ||
@@ -214,15 +254,10 @@ Integer currNumberQuestt = testLogic.getQuestionNumber();
                         testLogic.setTestAnswersMap(RESP_ZERO);
                     }
                     System.out.print("noButtonn");
-//                    testLogic.setTestAnswersMap(respONE); //0);
                 }
 
-//System.out.print("kk == " + buttonsGroup.getChecked());  //.getButton().getKeyCode());
-//                testLogic.setTestAnswersMap(1);
-
-
             } else {
-                question = testLogic.getCurrentQuestionText();
+//                question = testLogic.getCurrentQuestionText();
 
                 if (buttonsGroup.getButtons().get(0).isChecked()){ //getChecked()
                     testLogic.setTestAnswersMap(RESP_ONE);
@@ -233,11 +268,15 @@ Integer currNumberQuestt = testLogic.getQuestionNumber();
                 }
 
                 createResultLabel();
-//                resultTest();
-//                testDone();
+                questionLabel.setText("");
+                yesBut.remove();
+                noBut.remove();
+//                yesBut.setDisabled(false);
+//                noBut.setDisabled(true);
                 return;
             }
 
+            question = testLogic.getCurrentQuestionText();
             questionLabel.setText(question);
 
             yesBut.setChecked(false);
@@ -250,16 +289,16 @@ Integer currNumberQuestt = testLogic.getQuestionNumber();
 
     };
 
-    private void resultTest(){
-        Test test = new Test();
-        test.getTestResult();
+//    private void resultTest(){
+//        Test test = new Test();
+//        test.getTestResult();
+//
+//    }
 
-    }
 
-
-    private void testDone() {
-        Gdx.app.exit();
-    }
+//    private void testDone() {
+//        Gdx.app.exit();
+//    }
 
     private Actor createHeaderLabel() {
         Label headLabel = new Label(Assets.bdl().get("header"), uiSkin);
