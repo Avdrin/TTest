@@ -54,9 +54,9 @@ public class TestUI {
         leveMenu.row().height(h * (2f / 6 + 1f / 8)); //h / 8); //.width(w / 6);  //.height(h * (2f / 4 + 1f / 8));
         leveMenu.add(questionBlock());
         leveMenu.row().height(h / 8).width(w / 4);
-        leveMenu.add(repeatButton()).pad(w/30);
+        leveMenu.add(repeatButton()).pad(w / 30);
         leveMenu.row().height(h / 8).width(w / 4);
-        leveMenu.add(exitButton()).pad(w/30);
+        leveMenu.add(exitButton()).pad(w / 30);
         leveMenu.setDebug(true);
         stage.addActor(leveMenu);
         Gdx.input.setInputProcessor(stage);  // Gdx.input.setInputProcessor(stage);
@@ -64,6 +64,7 @@ public class TestUI {
     }
 
     ButtonGroup<Button> buttonsGroup;
+
     private void createButtonsGroup() {
         buttonsGroup = new ButtonGroup<Button>();
         buttonsGroup.setMaxCheckCount(1);
@@ -82,13 +83,13 @@ public class TestUI {
         lvlTable.defaults();
 
         //Question row
-        lvlTable.row().width(w - w/10);
-        lvlTable.add(createQuestionLabel()).pad(w/30).colspan(2);
+        lvlTable.row().width(w - w / 10);
+        lvlTable.add(createQuestionLabel()).pad(w / 30).colspan(2);
 
         //Buttons Yes No row
         lvlTable.row().height(h / 8);
-        lvlTable.add(createYesTestButton()).width(w/6).align(Align.right).pad(w/30);
-        lvlTable.add(createNoTestButton()).width(w/6).align(Align.left).pad(w/30);
+        lvlTable.add(createYesTestButton()).width(w / 6).align(Align.right).pad(w / 30);
+        lvlTable.add(createNoTestButton()).width(w / 6).align(Align.left).pad(w / 30);
 
 //        lvlTable.setDebug(true);
 
@@ -108,11 +109,26 @@ public class TestUI {
 //            resultLabel = new Label("!!!", uiSkin);
 //        }
         //Result row
+        lvlTable.row().width(w - w / 10);
+        lvlTable.add(resultLabel).pad(w / 30).colspan(2);//createResultLabel()).pad(w/30).colspan(2);
+
+        return resultLabel;
+    }
+
+
+
+   /* private Actor resetResultLabel() {
+
+        resultLabel = new Label("", uiSkin);
+        resultLabel.setWrap(true);
+        resultLabel.setAlignment(Align.center);
+
         lvlTable.row().width(w - w/10);
         lvlTable.add(resultLabel).pad(w/30).colspan(2);//createResultLabel()).pad(w/30).colspan(2);
 
         return resultLabel;
-    }
+    }*/
+
 
     private Actor createQuestionLabel() {
         questionLabel = new Label(testLogic.getCurrentQuestionText(), uiSkin);
@@ -122,8 +138,8 @@ public class TestUI {
     }
 
     private TextButton createNoTestButton() {
-        noBut = new TextButton(Assets.bdl().get("no"),  uiSkin.get("testBut", TextButton.TextButtonStyle.class));//"Button1", buttonStyle);
-        noBut.setColor(0f,1f,0f,1f);
+        noBut = new TextButton(Assets.bdl().get("no"), uiSkin.get("testBut", TextButton.TextButtonStyle.class));//"Button1", buttonStyle);
+        noBut.setColor(0f, 1f, 0f, 1f);
         buttonsGroup.add(noBut);
         noBut.addListener(onQuestionClicked);
         return noBut;
@@ -131,7 +147,7 @@ public class TestUI {
 
     private TextButton createYesTestButton() {
         yesBut = new TextButton(Assets.bdl().get("yes"), uiSkin.get("testBut", TextButton.TextButtonStyle.class));//"Button1", buttonStyle);
-        yesBut.setColor(0f,1f,0f,1f);
+        yesBut.setColor(0f, 1f, 0f, 1f);
         buttonsGroup.add(yesBut);
         yesBut.addListener(onQuestionClicked);
         return yesBut;
@@ -139,7 +155,7 @@ public class TestUI {
 
     private Actor repeatButton() {
         TextButton repeatButton = new TextButton(Assets.bdl().get("repeatButton"), Textures.getUiSkin());
-        repeatButton.setColor(0f,1f,0f,1f);
+        repeatButton.setColor(0f, 1f, 0f, 1f);
         repeatButton.addListener(onRepeatClicked
 //                new ClickListener() {
 //            public void clicked(InputEvent event, float x, float y) {
@@ -153,7 +169,7 @@ public class TestUI {
 
     private Actor exitButton() {
         TextButton exitButton = new TextButton(Assets.bdl().get("exitButton"), Textures.getUiSkin());
-        exitButton.setColor(0f,1f,0f,1f);
+        exitButton.setColor(0f, 1f, 0f, 1f);
         exitButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.app.exit();
@@ -164,14 +180,11 @@ public class TestUI {
 
 
 
+
     ClickListener onRepeatClicked = new ClickListener() {
         public void clicked(InputEvent event, float x, float y) {
-//            String question = null;
-//            Integer currNumberQuestt = testLogic.getQuestionNumber();
-//Test
-        testLogic = new Test();
+            testLogic = new Test();
             testLogic.start();
-//test.start();
 
             question = null;
             currNumberQuestt = testLogic.getQuestionNumber();
@@ -180,35 +193,29 @@ public class TestUI {
             question = testLogic.getCurrentQuestionText();
             questionLabel.setText(question);
 
+            if (resultLabel != null) {
+            resultLabel.setText("");
+            };
 
-//            yesBut.reset();
-//            noBut
-
-
-
-
+            yesBut.setVisible(true);
+            noBut.setVisible(true);
 
             yesBut.setChecked(false);
             noBut.setChecked(false);
-
-
-
         }
     };
-
-
 
 
     ClickListener onQuestionClicked = new ClickListener() {
         public void clicked(InputEvent event, float x, float y) {
             question = null;
-currNumberQuestt = testLogic.getQuestionNumber();
+            currNumberQuestt = testLogic.getQuestionNumber();
 
 
-            if(testLogic.goToNextQuestion()) { //testLogic.getQuestionNumber() <= 57){  //(testLogic.goToNextQuestion()) {
+            if (testLogic.goToNextQuestion()) { //testLogic.getQuestionNumber() <= 57){  //(testLogic.goToNextQuestion()) {
 //                question = testLogic.getCurrentQuestionText();
 
-                if (buttonsGroup.getButtons().get(0).isChecked()){
+                if (buttonsGroup.getButtons().get(0).isChecked()) {
                     if ((currNumberQuestt) == 12 ||
                             (currNumberQuestt) == 18 ||
                             (currNumberQuestt) == 30 ||
@@ -224,15 +231,15 @@ currNumberQuestt = testLogic.getQuestionNumber();
                             (currNumberQuestt) == 37 ||
                             (currNumberQuestt) == 41 ||
                             (currNumberQuestt) == 51
-                            ){
+                            ) {
                         testLogic.setTestAnswersMap(RESP_ZERO);
 
-                    }else {
-                    testLogic.setTestAnswersMap(RESP_ONE);
+                    } else {
+                        testLogic.setTestAnswersMap(RESP_ONE);
                     }
                     System.out.print("yesbuttonn");
                 }
-                if (buttonsGroup.getButtons().get(1).isChecked()){ // == noBut){ //.getChecked() == noBut){
+                if (buttonsGroup.getButtons().get(1).isChecked()) { // == noBut){ //.getChecked() == noBut){
                     if ((currNumberQuestt) == 12 ||
                             (currNumberQuestt) == 18 ||
                             (currNumberQuestt) == 30 ||
@@ -250,7 +257,7 @@ currNumberQuestt = testLogic.getQuestionNumber();
                             (currNumberQuestt) == 51
                             ) {
                         testLogic.setTestAnswersMap(RESP_ONE);
-                    }else {
+                    } else {
                         testLogic.setTestAnswersMap(RESP_ZERO);
                     }
                     System.out.print("noButtonn");
@@ -259,18 +266,19 @@ currNumberQuestt = testLogic.getQuestionNumber();
             } else {
 //                question = testLogic.getCurrentQuestionText();
 
-                if (buttonsGroup.getButtons().get(0).isChecked()){ //getChecked()
+                if (buttonsGroup.getButtons().get(0).isChecked()) { //getChecked()
                     testLogic.setTestAnswersMap(RESP_ONE);
                     System.out.print("yesbuttonn");
                 }
-                if (buttonsGroup.getButtons().get(1).isChecked()){ // == noBut){ //.getChecked() == noBut){
+                if (buttonsGroup.getButtons().get(1).isChecked()) { // == noBut){ //.getChecked() == noBut){
                     testLogic.setTestAnswersMap(RESP_ZERO);
                 }
 
                 createResultLabel();
                 questionLabel.setText("");
-                yesBut.remove();
-                noBut.remove();
+                yesBut.setVisible(false);//remove();
+                noBut.setVisible(false);
+//                noBut.remove();
 //                yesBut.setDisabled(false);
 //                noBut.setDisabled(true);
                 return;
@@ -284,7 +292,6 @@ currNumberQuestt = testLogic.getQuestionNumber();
 //            event.reset();
 //            noBut.reset();
         }
-
 
 
     };

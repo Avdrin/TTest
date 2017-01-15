@@ -16,6 +16,10 @@ public class Test {
     String resultNeuroticismScala = "";
     private String totalResult; //TODO fill it
 
+    private Integer IntroversExtravers;
+    private Integer Neurotism;
+
+
 
     //key - number of question
     //value - answer
@@ -140,24 +144,32 @@ public class Test {
         if (getHonestAnswers()){
         if (getIntroversionScala() >= 19) {
             resultIntroversionScala = "яркий экстраверт";
+            IntroversExtravers = 1;
+
         }
         if (getIntroversionScala() >= 15 && getIntroversionScala() < 19) {
             resultIntroversionScala = "экстраверт";
+            IntroversExtravers = 1;
         }
         if (getIntroversionScala() > 12 && getIntroversionScala() < 15) {
             resultIntroversionScala = "склонность к экстраверсии";
+            IntroversExtravers = 1;
         }
         if (getIntroversionScala() == 12) {
             resultIntroversionScala = "пограничное состояние говорит об уравновешенности личностных качеств";
+            IntroversExtravers = 0;
         }
         if (getIntroversionScala() < 12 && getIntroversionScala() > 9) {
             resultIntroversionScala = "склонность к интроверсии";
+            IntroversExtravers = -1;
         }
         if (getIntroversionScala() <= 9 && getIntroversionScala() > 5) {
             resultIntroversionScala = "интроверт";
+            IntroversExtravers = -1;
         }
         if (getIntroversionScala() <= 5) {
             resultIntroversionScala = "глубокий интроверт";
+            IntroversExtravers = -1;
         }}else {
             resultIntroversionScala = "наблюдается неискренность в ответах, свидетельствующая о некоторой демонстративности поведения и ориентированности Вас на социальное одобрение. " +
                     "Вам следует пройти другой тест, т.к. Вы стремитесь давать только \"хорошие\" ответы, а значит не можете быть оценены этим тестом. ";
@@ -170,15 +182,19 @@ public class Test {
         if (getHonestAnswers()){
         if (getNeuroticismScala() >= 19) {
             resultNeuroticismScala = "очень высокий уровень нейротизма";
+            Neurotism = 1;
         }
         if (getNeuroticismScala() >= 13 && getNeuroticismScala() < 19) {
             resultNeuroticismScala = "высокий уровень нейротизма";
+            Neurotism = 1;
         }
         if (getNeuroticismScala() >= 9 && getNeuroticismScala() < 13) {
             resultNeuroticismScala = "среднее значение свидетельствует о наличии черт как одного типа темперамента так и другого в зависимости от того на какой границе находится \"координата\"";
+Neurotism = 0;
         }
         if (getNeuroticismScala() < 9) {
             resultNeuroticismScala = "низкий уровень нейротизма";
+        Neurotism = -1;
         }}else {
             resultNeuroticismScala = "";
         }
@@ -196,6 +212,24 @@ public class Test {
 
 
         totalResult = getLieScala() + ", " + getResultIntroversionScala() + ", " + getResultNeuroticismScala();
+
+        if (Neurotism != null || IntroversExtravers != null) {
+
+            if (Neurotism == -1 && IntroversExtravers == -1) {
+                totalResult += "Флегматик";
+            }
+            if (Neurotism == -1 && IntroversExtravers == 1) {
+                totalResult += "Сангвиник";
+            }
+            if (Neurotism == 1 && IntroversExtravers == -1) {
+                totalResult += "Меланхолик";
+            }
+            if (Neurotism == 1 && IntroversExtravers == 1) {
+                totalResult += "Холерик";
+            }
+        }else {
+
+        }
         return totalResult;
     }
 
