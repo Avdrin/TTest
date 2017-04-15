@@ -3,9 +3,6 @@ package ru.electronikas.ttest.data;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by nikas on 1/8/17.
- */
 public class QuestionSource {
 
     Map<Integer, String> listQuestion = new HashMap<Integer, String>();

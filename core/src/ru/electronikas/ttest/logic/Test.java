@@ -7,9 +7,6 @@ import java.util.Map;
 
 public class Test {
 
-    Map<Integer, Integer> lieScalaMap; // = HashMap<>();
-
-
     QuestionSource questionSource;
     Integer lieScala;
     Boolean honestAnswers;
@@ -17,14 +14,14 @@ public class Test {
     Integer neuroticismScala;
 
     String resultIntroversionScala = "";
+    String resultIntroversionScalaTest = "";
     String resultNeuroticismScala = "";
-    private String totalResult = ""; //TODO fill it
+    private String totalResult = "";
 
     private Integer IntroversExtravers;
     private Integer Neurotism;
-
-//    private Integer lieScala
-
+    String intr = "";
+    String neur = "";
 
     //key - number of question
     //value - answer
@@ -42,7 +39,6 @@ public class Test {
     //false - test Done
     public boolean goToNextQuestion() {
         questionSource.goToNextQuestion();
-
         if (questionSource.getCurrentQuestion() == null) {
             return false;
         }
@@ -50,12 +46,9 @@ public class Test {
     }
 
     public Map<Integer, Integer> setTestAnswersMap(Integer valueAnswers) {
-
         testAnswersMap.put(getQuestionNumber() - 1, valueAnswers);
-
         return testAnswersMap;
     }
-
 
     private Boolean testAnswersMapFull() {
         if (testAnswersMap.size() == 0) {
@@ -72,24 +65,18 @@ public class Test {
                     testAnswersMap.get(12) + testAnswersMap.get(18) + testAnswersMap.get(30) +
                     testAnswersMap.get(42) + testAnswersMap.get(48) + testAnswersMap.get(54);
         }
-//        return lieScala;
-
     }
 
     private void getHonestAnswers() {
-//        getLieScala();
         if (lieScala > 5) {
             honestAnswers = false;
         } else {
             honestAnswers = true;
         }
-//        return honestAnswers;
     }
 
     private void getIntroversionScala() {
-//        getHonestAnswers();
         if (honestAnswers) {
-//            introversionScala = testAnswersMap.get(1);
             introversionScala = testAnswersMap.get(1) + testAnswersMap.get(3) +
                     testAnswersMap.get(8) + testAnswersMap.get(10) +
                     testAnswersMap.get(13) + testAnswersMap.get(17) +
@@ -106,13 +93,10 @@ public class Test {
         } else {
             introversionScala = -1;
         }
-
-//        return introversionScala;
     }
 
     private void getNeuroticismScala() {
         if (honestAnswers) {
-//            neuroticismScala = testAnswersMap.get(1);
             neuroticismScala = testAnswersMap.get(2) + testAnswersMap.get(4) +
                     testAnswersMap.get(7) + testAnswersMap.get(9) +
                     testAnswersMap.get(11) + testAnswersMap.get(14) +
@@ -128,57 +112,47 @@ public class Test {
         } else {
             neuroticismScala = -1;
         }
-
-//        return neuroticismScala;
     }
 
-
-//    private void calculateTestResult() {
-//            //return
 //            // "неискренность в ответах, свидетельствующая также о некоторой демонстративности поведения и ориентированности испытуемого на социальное одобрение"
 //            // "Вам следует пройти другой тест, т.к. Вы стремитесь давать только "хорошие" ответы, а значит не можете быть оценены этим тестом."
 //            // и здесь же добавить кнопку на другой тест.
-//        }
-//        //use testAnswersMap to write testResult
-//    }
 
     private void getResultIntroversionScala() {
         if (honestAnswers) {
             if (introversionScala >= 19) {
-                resultIntroversionScala = "Яркий экстраверт";
+                resultIntroversionScala = "Яркий экстраверт.";
                 IntroversExtravers = 1;
-
             }
             if (introversionScala >= 15 && introversionScala < 19) {
-                resultIntroversionScala = "Экстраверт";
+                resultIntroversionScala = "Экстраверт.";
                 IntroversExtravers = 1;
             }
             if (introversionScala > 12 && introversionScala < 15) {
-                resultIntroversionScala = "Склонность к экстраверсии";
+                resultIntroversionScala = "Склонность к экстраверсии.";
                 IntroversExtravers = 1;
             }
             if (introversionScala == 12) {
-                resultIntroversionScala = "Пограничное состояние говорит об уравновешенности личностных качеств";
+                resultIntroversionScala = "Пограничное состояние говорит об уравновешенности личностных качеств.";
                 IntroversExtravers = 0;
             }
             if (introversionScala < 12 && introversionScala > 9) {
-                resultIntroversionScala = "Склонность к интроверсии";
+                resultIntroversionScala = "Склонность к интроверсии.";
                 IntroversExtravers = -1;
             }
             if (introversionScala <= 9 && introversionScala > 5) {
-                resultIntroversionScala = "Интроверт";
+                resultIntroversionScala = "Интроверт.";
                 IntroversExtravers = -1;
             }
             if (introversionScala <= 5) {
-                resultIntroversionScala = "Глубокий интроверт";
+                resultIntroversionScala = "Глубокий интроверт.";
                 IntroversExtravers = -1;
             }
         } else {
-            resultIntroversionScala = "Наблюдается неискренность в ответах, свидетельствующая о некоторой демонстративности поведения и ориентированности Вас на социальное одобрение. " +
-                    "Вам следует пройти другой тест, т.к. Вы стремитесь давать только \"хорошие\" ответы, а значит не можете быть оценены этим тестом. ";
-
+            resultIntroversionScala = "Наблюдается неискренность в ответах, свидетельствующая о некоторой демонстративности поведения и ориентированности Вас на социальное одобрение.";
+            //"Вам следует пройти другой тест, т.к. Вы стремитесь давать только \"хорошие\" ответы, а значит не можете быть оценены этим тестом. ";
+            resultIntroversionScalaTest = "чтобы проверить что сюда вошло.";
         }
-//        return resultIntroversionScala;
     }
 
     private void getResultNeuroticismScala() {
@@ -202,7 +176,6 @@ public class Test {
         } else {
             resultNeuroticismScala = "";
         }
-//        return resultNeuroticismScala;
     }
 
     public String getTestResult() {
@@ -216,13 +189,6 @@ public class Test {
         getResultIntroversionScala();
         getResultNeuroticismScala();
 
-
-//        for (Map.Entry<Integer, Integer> entry : testAnswersMap.entrySet()) {
-// поотлаживать еще. прыгающие кнопки. иконки добавить.
-//            totalResult = "sd " + entry + "fv";
-//for(int i=0;i<=57;i++){
-//    totalResult = "sd " + testAnswersMap.get(i) + "fv";
-//        }
 
         if (Neurotism != null || IntroversExtravers != null) {
 
@@ -242,17 +208,15 @@ public class Test {
             totalResult = "";
         }
 
-        String intr = "";
-        String neur = "";
 
-        if (resultIntroversionScala != ""){
-            intr = "Экстраверсия - интроверсия: ";
+        if (resultIntroversionScalaTest == "") {
+            intr = "\n Экстраверсия - интроверсия: ";
         }
-        if (resultNeuroticismScala != ""){
-            neur = ". Эмоциональная стабильность: ";
+        if (resultNeuroticismScala != "") {
+            neur = "\n Эмоциональная стабильность: ";
         }
 
-        totalResult += intr + resultIntroversionScala + neur + resultNeuroticismScala + ". Ложных ответов: " + lieScala + ".";
+        totalResult += intr + resultIntroversionScala + neur + resultNeuroticismScala + "\n Ложных ответов: " + lieScala + ".";
 
 
         return totalResult;

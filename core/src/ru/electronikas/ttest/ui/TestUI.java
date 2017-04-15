@@ -44,100 +44,39 @@ public class TestUI {
         createButtonsGroup();
 
         leveMenu = new Table(uiSkin);
-//        leveMenu.align(Align.topLeft);
-//        leveMenu.setPosition(0, 0); //h);
-//        leveMenu.setWidth(w);
-//        leveMenu.setHeight(h);
-//        leveMenu.defaults().width(w);
-//        leveMenu.row().height(h / 6);
-
-
-//        leveMenu.add(createHeaderLabel());
-//        leveMenu.row().height(h * (2f / 6 + 1f / 8)); //h / 8); //.width(w / 6);  //.height(h * (2f / 4 + 1f / 8));
-
-
-//        leveMenu.add(questionBlock());//.pad(w / 30).colspan(2)
-//        leveMenu.row().height(h / 8); //.colspan(2); //.width(w / 8);
-
-
-
-
-leveMenu = updateTable(leveMenu, questionBlock());
-//        leveMenu.row().height(h / 8).width(w / 4);
-//        leveMenu.row().height(h / 8).width(w / 4);
-
-
-//        lvlTable = new Table();
-//        lvlTable.setSkin(uiSkin);
-//        lvlTable.align(Align.center);
-//        lvlTable.defaults();
-//        lvlTable.row().width(w - w / 6);
-////        lvlTable.add(createQuestionLabel()).pad(w / 30).colspan(2);
-//        lvlTable.row().height(h / 8);
-//
-//
-//
-//
-//        lvlTable.add(exitButton()).width(w / 4).align(Align.right).pad(w / 30);
-//        lvlTable.add(repeatButton()).width(w / 4).align(Align.left).pad(w / 30);
-//
-//
-//
-//        leveMenu.add(lvlTable);
-
-
+        leveMenu = updateTable(leveMenu, questionBlock());
         leveMenu.setDebug(true);
         stage.addActor(leveMenu);
-        Gdx.input.setInputProcessor(stage);  // Gdx.input.setInputProcessor(stage);
-
+        Gdx.input.setInputProcessor(stage);
     }
 
-
-//    private Table setTable(Table leveMenu) {
-//        lvlTable = new Table();
-//        lvlTable.setSkin(uiSkin);
-//        lvlTable.align(Align.center);
-//        lvlTable.defaults();
-//        lvlTable.row().width(w - w / 6);
-//        lvlTable.row().height(h / 8);
-//
-//        lvlTable.add(exitButton()).width(w / 4).align(Align.right).pad(w / 30);
-//        lvlTable.add(repeatButton()).width(w / 4).align(Align.left).pad(w / 30);
-//
-//
-//        leveMenu.add(lvlTable);
-//        return leveMenu;
-//    }
-
-    private Table updateTable(Table leveMenu, Actor block){
+    private Table updateTable(Table leveMenu, Actor block) {
         leveMenu.clear();
-
-//        createButtonsGroup();
-//
-//        leveMenu = new Table(uiSkin);
         leveMenu.align(Align.topLeft);
-        leveMenu.setPosition(0, 0); //h);
+        leveMenu.setPosition(0, 0);
         leveMenu.setWidth(w);
         leveMenu.setHeight(h);
         leveMenu.defaults().width(w);
         leveMenu.row().height(h / 6);
-
-
         leveMenu.add(createHeaderLabel());
         leveMenu.row().height(h * (2f / 6 + 1f / 8)); //h / 8); //.width(w / 6);  //.height(h * (2f / 4 + 1f / 8));
-
-
-
-        leveMenu.add(block); //questionBlock());//.pad(w / 30).colspan(2)
+        leveMenu.add(block);
         leveMenu.row().height(h / 8); //.colspan(2); //.width(w / 8);
-
         lvlTable = new Table();
         lvlTable.setSkin(uiSkin);
         lvlTable.align(Align.center);
         lvlTable.defaults();
         lvlTable.row().width(w - w / 6);
-        lvlTable.row().height(h / 8);
 
+        //Buttons Yes No row
+        deleteYesTestButton();
+        deleteNoTestButton();
+
+        lvlTable.row().height(h / 8);
+        lvlTable.add(createYesTestButton()).width(w / 6).align(Align.right).pad(w / 30);
+        lvlTable.add(createNoTestButton()).width(w / 6).align(Align.left).pad(w / 30);
+
+        lvlTable.row().height(h / 8);
         lvlTable.add(exitButton()).width(w / 4).align(Align.right).pad(w / 30);
         lvlTable.add(repeatButton()).width(w / 4).align(Align.left).pad(w / 30);
 
@@ -171,46 +110,18 @@ leveMenu = updateTable(leveMenu, questionBlock());
         lvlTable.row().width(w - w / 10);
         lvlTable.add(createQuestionLabel()).pad(w / 30).colspan(2);
 
-        //Buttons Yes No row
-        lvlTable.row().height(h / 8);
-        lvlTable.add(createYesTestButton()).width(w / 6).align(Align.right).pad(w / 30);
-        lvlTable.add(createNoTestButton()).width(w / 6).align(Align.left).pad(w / 30);
-
-//        lvlTable.setDebug(true);
-
-//        ScrollPane scrollPane = new ScrollPane(lvlTable, Textures.getUiSkin());
-//        scrollPane.setWidth(butW);
-////        scrollPane.setHeight(h/2);
-//        scrollPane.getStyle().background = null;
         return lvlTable;
     }
 
     private Actor createResultLabel() {
         resultLabel = new Label(testLogic.getTestResult(), uiSkin);
-//                "xcvxcvxzvzxcvzxcvzxvdgjdfghdgushdnglsudfhnglvdzhufnldvuhgn lisvdhg ", uiSkin);
-        //testLogic.getTestResult(), uiSkin);
         resultLabel.setWrap(true);
         resultLabel.setAlignment(Align.center);
         lvlTable.row().width(w - w / 10);
-        lvlTable.add(resultLabel).pad(w / 30).colspan(2);//createResultLabel()).pad(w/30).colspan(2);
+        lvlTable.add(resultLabel).pad(w / 30).colspan(2);
 
         return resultLabel;
     }
-
-
-
-   /* private Actor resetResultLabel() {
-
-        resultLabel = new Label("", uiSkin);
-        resultLabel.setWrap(true);
-        resultLabel.setAlignment(Align.center);
-
-        lvlTable.row().width(w - w/10);
-        lvlTable.add(resultLabel).pad(w/30).colspan(2);//createResultLabel()).pad(w/30).colspan(2);
-
-        return resultLabel;
-    }*/
-
 
     private Actor createQuestionLabel() {
         questionLabel = new Label(testLogic.getCurrentQuestionText(), uiSkin);
@@ -233,6 +144,18 @@ leveMenu = updateTable(leveMenu, questionBlock());
         buttonsGroup.add(yesBut);
         yesBut.addListener(onQuestionClicked);
         return yesBut;
+    }
+
+    private void deleteYesTestButton() {
+        if (yesBut != null) {
+            buttonsGroup.remove(yesBut);
+        }
+    }
+
+    private void deleteNoTestButton() {
+        if (noBut != null) {
+            buttonsGroup.remove(noBut);
+        }
     }
 
     private Actor repeatButton() {
@@ -266,19 +189,7 @@ leveMenu = updateTable(leveMenu, questionBlock());
 
             question = testLogic.getCurrentQuestionText();
             questionLabel.setText(question);
-
-//            if (resultLabel != null) {
-//                resultLabel.setText("");
-//            }
-//            ;
-
-//            yesBut.setVisible(true);
-//            noBut.setVisible(true);
-//
-//            yesBut.setChecked(false);
-//            noBut.setChecked(false);
-
-            leveMenu = updateTable(leveMenu,questionBlock());
+            leveMenu = updateTable(leveMenu, questionBlock());
         }
     };
 
@@ -289,9 +200,7 @@ leveMenu = updateTable(leveMenu, questionBlock());
             currNumberQuestt = testLogic.getQuestionNumber();
 
 
-            if (testLogic.goToNextQuestion()) { //testLogic.getQuestionNumber() <= 57){  //(testLogic.goToNextQuestion()) {
-//                question = testLogic.getCurrentQuestionText();
-
+            if (testLogic.goToNextQuestion()) {
                 if (buttonsGroup.getButtons().get(0).isChecked()) {
                     if ((currNumberQuestt) == 12 ||
                             (currNumberQuestt) == 18 ||
@@ -314,9 +223,9 @@ leveMenu = updateTable(leveMenu, questionBlock());
                     } else {
                         testLogic.setTestAnswersMap(RESP_ONE);
                     }
-                    System.out.print("yesbuttonn");
+//                    System.out.print("yesbuttonn");
                 }
-                if (buttonsGroup.getButtons().get(1).isChecked()) { // == noBut){ //.getChecked() == noBut){
+                if (buttonsGroup.getButtons().get(1).isChecked()) {
                     if ((currNumberQuestt) == 12 ||
                             (currNumberQuestt) == 18 ||
                             (currNumberQuestt) == 30 ||
@@ -337,38 +246,21 @@ leveMenu = updateTable(leveMenu, questionBlock());
                     } else {
                         testLogic.setTestAnswersMap(RESP_ZERO);
                     }
-                    System.out.print("noButtonn");
+//                    System.out.print("noButtonn");
                 }
 
             } else {
-//                question = testLogic.getCurrentQuestionText();
-
-                if (buttonsGroup.getButtons().get(0).isChecked()) { //getChecked()
+                if (buttonsGroup.getButtons().get(0).isChecked()) {
                     testLogic.setTestAnswersMap(RESP_ONE);
-                    System.out.print("yesbuttonn");
+//                    System.out.print("yesbuttonn");
                 }
-                if (buttonsGroup.getButtons().get(1).isChecked()) { // == noBut){ //.getChecked() == noBut){
+                if (buttonsGroup.getButtons().get(1).isChecked()) {
                     testLogic.setTestAnswersMap(RESP_ZERO);
                 }
-
-
-//                lvlTable.clear();
-//                lvlTable.add(createResultLabel());
-//                lvlTable.add();
-//
-                questionLabel.setText("");
-                yesBut.setVisible(false);//remove();
+                leveMenu = updateTable(leveMenu, createResultLabel());
+                yesBut.setVisible(false);
                 noBut.setVisible(false);
 
-
-                leveMenu = updateTable(leveMenu, createResultLabel());
-
-//                createResultLabel();
-//                exitButton().clear();
-
-//                noBut.remove();
-//                yesBut.setDisabled(false);
-//                noBut.setDisabled(true);
                 return;
             }
 
@@ -377,23 +269,11 @@ leveMenu = updateTable(leveMenu, questionBlock());
 
             yesBut.setChecked(false);
             noBut.setChecked(false);
-//            event.reset();
-//            noBut.reset();
         }
 
 
     };
 
-//    private void resultTest(){
-//        Test test = new Test();
-//        test.getTestResult();
-//
-//    }
-
-
-//    private void testDone() {
-//        Gdx.app.exit();
-//    }
 
     private Actor createHeaderLabel() {
         Label headLabel = new Label(Assets.bdl().get("header"), uiSkin);
